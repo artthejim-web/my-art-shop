@@ -1,4 +1,4 @@
-// Gallery data - Update with your artwork details
+// Gallery data
 const galleryItems = [
     {
         title: "Eminem",
@@ -38,7 +38,7 @@ const galleryItems = [
     },
     {
         title: "Bloom in Silence",
-        medium: "Charcoal, Graphite & Colored Pencils  ",
+        medium: "Charcoal, Graphite & Colored Pencils",
         size: "A3 (297 x 420 mm)",
         image: "artwork7.jpg.jpg"
     },
@@ -50,7 +50,7 @@ const galleryItems = [
     },
     {
         title: "Untitled",
-        medium: "Chaecoal & Pastels",
+        medium: "Charcoal & Pastels",
         size: "A4 (210 x 297 mm)",
         image: "artwork9.jpg.jpg"
     },
@@ -66,7 +66,7 @@ const galleryItems = [
         size: "A3 (297 x 420 mm)",
         image: "artwork11.jpg.jpg"
     },
-  {
+    {
         title: "Untitled",
         medium: "Charcoal & Pastels",
         size: "A4 (210 x 297 mm)",
@@ -80,9 +80,12 @@ const galleryItems = [
     }
 ];
 
+let slideIndex = 1;
+
 // Load gallery items
 function loadGallery() {
     const galleryGrid = document.getElementById('galleryGrid');
+    if (!galleryGrid) return; // Only run on gallery page
     
     galleryItems.forEach(item => {
         const galleryItem = document.createElement('div');
@@ -106,9 +109,54 @@ function loadGallery() {
     });
 }
 
+// Slideshow functions
+function changeSlide(n) {
+    showSlide(slideIndex += n);
+}
+
+function currentSlide(n) {
+    showSlide(slideIndex = n);
+}
+
+function showSlide(n) {
+    let slides = document.getElementsByClassName('slide');
+    let dots = document.getElementsByClassName('dot');
+    
+    if (slides.length === 0) return; // Only run on home page
+    
+    if (n > slides.length) {
+        slideIndex = 1;
+    }
+    if (n < 1) {
+        slideIndex = slides.length;
+    }
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].classList.remove('fade');
+        slides[i].style.display = 'none';
+    }
+    for (let i = 0; i < dots.length; i++) {
+        dots[i].classList.remove('active');
+    }
+    slides[slideIndex - 1].style.display = 'block';
+    slides[slideIndex - 1].classList.add('fade');
+    dots[slideIndex - 1].classList.add('active');
+}
+
+// Auto-advance slideshow every 5 seconds
+function autoSlide() {
+    const slides = document.getElementsByClassName('slide');
+    if (slides.length > 0) {
+        slideIndex++;
+        showSlide(slideIndex);
+        setTimeout(autoSlide, 5000);
+    }
+}
+
 // Mobile menu toggle
 document.addEventListener('DOMContentLoaded', function() {
     loadGallery();
+    showSlide(slideIndex);
+    autoSlide();
     
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
@@ -123,20 +171,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
-            navMenu.style.display = 'none';
+            if (navMenu) {
+                navMenu.style.display = 'none';
+            }
         });
-    });
-});
-
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth'
-            });
-        }
     });
 });

@@ -70,9 +70,9 @@ body {
 .hero {
     background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
     color: #fff;
-    padding: 100px 2rem;
+    padding: 80px 2rem;
     text-align: center;
-    min-height: 60vh;
+    min-height: 40vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -87,19 +87,110 @@ body {
 .hero-content .quote {
     font-size: 1.3rem;
     font-style: italic;
-    margin-bottom: 2rem;
     color: #d4af37;
     animation: fadeInUp 1s ease-in;
+}
+
+/* Slideshow Section */
+.slideshow-section {
+    background-color: #f9f9f9;
+    padding: 40px 2rem;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slideshow-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.slide {
+    display: none;
+    width: 100%;
+    height: 500px;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slide.fade {
+    animation: fade 1s;
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    background-color: rgba(0,0,0,0.5);
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.3s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    z-index: 10;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+.dots-container {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #f9f9f9;
+}
+
+.dot {
+    cursor: pointer;
+    height: 12px;
+    width: 12px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.dot.active {
+    background-color: #d4af37;
+}
+
+/* CTA Section */
+.cta-section {
+    text-align: center;
+    padding: 40px 2rem;
+    background-color: #fff;
 }
 
 .cta-button {
     display: inline-block;
     background-color: #d4af37;
     color: #1a1a1a;
-    padding: 12px 30px;
+    padding: 15px 40px;
     text-decoration: none;
     border-radius: 5px;
     font-weight: bold;
+    font-size: 1.1rem;
     transition: background-color 0.3s, transform 0.3s;
 }
 
@@ -119,6 +210,7 @@ body {
 .gallery {
     padding: 60px 2rem;
     background-color: #f9f9f9;
+    min-height: 80vh;
 }
 
 .gallery h2 {
@@ -204,6 +296,7 @@ body {
 .about {
     padding: 60px 2rem;
     background-color: #fff;
+    min-height: 80vh;
 }
 
 .about h2 {
@@ -218,13 +311,26 @@ body {
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
     align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.profile-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .profile-image {
     width: 100%;
-    max-width: 400px;
+    max-width: 350px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.about-text {
+    display: flex;
+    align-items: center;
 }
 
 .about-text p {
@@ -237,19 +343,33 @@ body {
 .contact {
     padding: 60px 2rem;
     background-color: #f9f9f9;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
+}
+
+.contact .container {
+    max-width: 1200px;
 }
 
 .contact h2 {
     font-size: 2.5rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     color: #1a1a1a;
+}
+
+.contact-intro {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 3rem;
 }
 
 .contact-links {
     display: flex;
     justify-content: center;
-    gap: 3rem;
+    gap: 4rem;
     flex-wrap: wrap;
 }
 
@@ -257,7 +377,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
+    gap: 1rem;
     text-decoration: none;
     color: #1a1a1a;
     font-weight: bold;
@@ -269,7 +389,7 @@ body {
 }
 
 .contact-link i {
-    font-size: 2.5rem;
+    font-size: 3rem;
     color: #d4af37;
     transition: color 0.3s;
 }
@@ -284,6 +404,7 @@ footer {
     color: #fff;
     text-align: center;
     padding: 2rem;
+    margin-top: auto;
 }
 
 /* Animations */
@@ -306,6 +427,15 @@ footer {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: 0.4;
+    }
+    to {
+        opacity: 1;
     }
 }
 
@@ -337,15 +467,39 @@ footer {
 
     .about-content {
         grid-template-columns: 1fr;
+        gap: 2rem;
     }
 
     .contact-links {
-        gap: 1.5rem;
+        gap: 2rem;
     }
 
     .gallery h2,
     .about h2,
     .contact h2 {
         font-size: 1.8rem;
+    }
+
+    .slideshow-container {
+        max-width: 100%;
+    }
+
+    .slide {
+        height: 300px;
+    }
+
+    .prev, .next {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .dot {
+        height: 10px;
+        width: 10px;
+        margin: 0 3px;
+    }
+
+    .contact-link span {
+        font-size: 0.9rem;
     }
 }
