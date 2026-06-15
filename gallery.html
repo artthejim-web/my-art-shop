@@ -35,6 +35,38 @@
         </div>
     </section>
 
+    <!-- Lightbox Modal -->
+    <div id="lightboxModal" class="lightbox-modal">
+        <span class="close-btn" onclick="closeLightbox()">&times;</span>
+        
+        <div class="lightbox-content">
+            <div class="lightbox-image-container">
+                <img id="lightboxImage" src="" alt="">
+            </div>
+            
+            <div class="lightbox-info">
+                <h2 id="lightboxTitle"></h2>
+                <div class="lightbox-details">
+                    <p><strong>Medium:</strong> <span id="lightboxMedium"></span></p>
+                    <p><strong>Size:</strong> <span id="lightboxSize"></span></p>
+                    <p class="lightbox-price"><strong>Price:</strong> <span id="lightboxPrice"></span></p>
+                </div>
+                <a id="lightboxOrderBtn" href="#" target="_blank" class="lightbox-order-button">
+                    <i class="fab fa-whatsapp"></i> Order via WhatsApp
+                </a>
+            </div>
+        </div>
+        
+        <!-- Navigation Arrows -->
+        <a class="lightbox-prev" onclick="changeArtwork(-1)">&#10094;</a>
+        <a class="lightbox-next" onclick="changeArtwork(1)">&#10095;</a>
+        
+        <!-- Artwork Counter -->
+        <div class="lightbox-counter">
+            <span id="artworkCounter"></span>
+        </div>
+    </div>
+
     <footer>
         <p>&copy; 2024 Jim Mbugua Art. All rights reserved.</p>
     </footer>
