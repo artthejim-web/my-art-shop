@@ -1,113 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jim Mbugua Art</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jim Mbugua Art</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <!-- Lightbox CSS (if you use it in gallery.html) -->
+  <!-- <link href="https://cdn.jsdelivr.net/npm/lightbox2/dist/css/lightbox.min.css" rel="stylesheet" /> -->
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo"><a href="index.html" style="text-decoration: none; color: #fff;">Jim Mbugua Art</a></div>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
-                <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="contact.html" class="nav-link">Contact</a></li>
-            </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo"><a href="index.html" style="text-decoration: none; color: #fff;">Jim Mbugua Art</a></div>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Jim Mbugua Art</h1>
-            <p class="quote">"Art is how we decorate space; Music is how we decorate time." - Jean-Michel Basquiat</p>
-        </div>
-    </section>
+  <!-- Hero Section with overlay slideshow -->
+  <section id="home" class="hero">
+    <div class="hero-overlay">
+      <div class="artwork-slideshow">
+        <!-- Replace these src with your actual artwork image paths -->
+        <img src="artwork1.jpg" class="slide" />
+        <img src="artwork2.jpg" class="slide" />
+        <img src="artwork3.jpg" class="slide" />
+        <img src="artwork4.jpg" class="slide" />
+        <img src="artwork5.jpg" class="slide" />
+        <img src="artwork6.jpg" class="slide" />
+        <img src="artwork7.jpg" class="slide" />
+      </div>
+      <div class="hero-content">
+        <h1>Jim Mbugua Art</h1>
+        <p class="quote">"Art is how we decorate space; Music is how we decorate time." - Jean-Michel Basquiat</p>
+      </div>
+    </div>
+  </section>
+    
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <a href="gallery.html" class="cta-button">Explore Gallery</a>
+  </section>
 
-    <!-- Horizontal Scrolling Slideshow -->
-    <section class="horizontal-slideshow">
-        <div class="slideshow-wrapper">
-            <div class="slides-container">
-                <div class="slide-item">
-                    <img src="artwork1.jpg.jpg" alt="Artwork 1">
-                </div>
-                <div class="slide-item">
-                    <img src="artwork2.jpg.jpg" alt="Artwork 2">
-                </div>
-                <div class="slide-item">
-                    <img src="artwork3.jpg.jpg" alt="Artwork 3">
-                </div>
-                <div class="slide-item">
-                    <img src="artwork4.jpg.jpg" alt="Artwork 4">
-                </div>
-                <div class="slide-item">
-                    <img src="artwork5.jpg.jpg" alt="Artwork 5">
-                </div>
-                <div class="slide-item">
-                    <img src="artwork6.jpg.jpg" alt="Artwork 6">
-                </div>
-                <div class="slide-item">
-                    <img src="artwork7.jpg.jpg" alt="Artwork 7">
-                </div>
-                <div class="slide-item">
-                    <img src="artwork8.jpg.jpg" alt="Artwork 8">
-                </div>
-                <div class="slide-item">
-                    <img src="artwork9.jpg.jpg" alt="Artwork 9">
-                </div>
-                <div class="slide-item">
-                    <img src="artwork10.jpg.jpg" alt="Artwork 10">
-                </div>
-                <div class="slide-item">
-                    <img src="artwork11.jpg.jpg" alt="Artwork 11">
-                </div>
-                <div class="slide-item">
-                    <img src="artwork12.jpg.jpg" alt="Artwork 12">
-                </div>
-                <div class="slide-item">
-                    <img src="artwork13.jpg.jpg" alt="Artwork 13">
-                </div>
-                <!-- Duplicate for seamless loop -->
-                <div class="slide-item">
-                    <img src="artwork1.jpg.jpg" alt="Artwork 1">
-                </div>
-                <div class="slide-item">
-                    <img src="artwork2.jpg.jpg" alt="Artwork 2">
-                </div>
-                <div class="slide-item">
-                    <img src="artwork3.jpg.jpg" alt="Artwork 3">
-                </div>
-                <div class="slide-item">
-                    <img src="artwork4.jpg.jpg" alt="Artwork 4">
-                </div>
-                <div class="slide-item">
-                    <img src="artwork5.jpg.jpg" alt="Artwork 5">
-                </div>
-                <div class="slide-item">
-                    <img src="artwork6.jpg.jpg" alt="Artwork 6">
-                </div>
-            </div>
-        </div>
-    </section>
+  <footer>
+    <p>&copy; 2024 Jim Mbugua Art. All rights reserved.</p>
+  </footer>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <a href="gallery.html" class="cta-button">Explore Gallery</a>
-    </section>
-
-    <footer>
-        <p>&copy; 2024 Jim Mbugua Art. All rights reserved.</p>
-    </footer>
-
-    <script src="script.js"></script>
+  <!-- Lightbox JS (if used in gallery.html) -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/lightbox2/dist/js/lightbox.min.js"></script> -->
+  <script src="script.js"></script>
 </body>
 </html>
