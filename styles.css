@@ -238,6 +238,17 @@ body {
     margin-bottom: 1rem;
 }
 
+.gallery-item-details p {
+    margin-bottom: 0.5rem;
+}
+
+.gallery-item-details .price {
+    color: #d4af37;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-top: 0.8rem;
+}
+
 .order-button {
     display: inline-block;
     background-color: #25d366;
