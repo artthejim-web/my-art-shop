@@ -80,8 +80,6 @@ const galleryItems = [
     }
 ];
 
-let slideIndex = 1;
-
 // Load gallery items
 function loadGallery() {
     const galleryGrid = document.getElementById('galleryGrid');
@@ -109,54 +107,9 @@ function loadGallery() {
     });
 }
 
-// Slideshow functions
-function changeSlide(n) {
-    showSlide(slideIndex += n);
-}
-
-function currentSlide(n) {
-    showSlide(slideIndex = n);
-}
-
-function showSlide(n) {
-    let slides = document.getElementsByClassName('slide');
-    let dots = document.getElementsByClassName('dot');
-    
-    if (slides.length === 0) return; // Only run on home page
-    
-    if (n > slides.length) {
-        slideIndex = 1;
-    }
-    if (n < 1) {
-        slideIndex = slides.length;
-    }
-    for (let i = 0; i < slides.length; i++) {
-        slides[i].classList.remove('fade');
-        slides[i].style.display = 'none';
-    }
-    for (let i = 0; i < dots.length; i++) {
-        dots[i].classList.remove('active');
-    }
-    slides[slideIndex - 1].style.display = 'block';
-    slides[slideIndex - 1].classList.add('fade');
-    dots[slideIndex - 1].classList.add('active');
-}
-
-// Auto-advance slideshow every 5 seconds
-function autoSlide() {
-    const slides = document.getElementsByClassName('slide');
-    if (slides.length > 0) {
-        slideIndex++;
-        showSlide(slideIndex);
-        setTimeout(autoSlide, 5000);
-    }
-}
-
 // Mobile menu toggle
 document.addEventListener('DOMContentLoaded', function() {
     loadGallery();
-    showSlide(slideIndex);
-    autoSlide();
     
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
