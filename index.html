@@ -6,16 +6,74 @@
   <title>Jim Mbugua Art</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link href="https://cdn.jsdelivr.net/npm/lightbox2/dist/css/lightbox.min.css" rel="stylesheet" />
+  <style>
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .artwork-slideshow {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .artwork-slideshow .slide {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1.2s ease-in-out;
+    }
+    .artwork-slideshow .slide.active {
+      opacity: 1;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 20px;
+    }
+    .hero-content h1 {
+      color: #ffffff;
+      font-size: clamp(2rem, 6vw, 4rem);
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+    }
+    .hero-content .quote {
+      color: #ffcc00;
+      font-size: clamp(0.9rem, 2.2vw, 1.15rem);
+      font-style: italic;
+      font-weight: 500;
+      max-width: 600px;
+      margin: 0 auto;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.9);
+      line-height: 1.6;
+    }
+  </style>
 </head>
 <body>
   <nav class="navbar">
     <div class="nav-container">
       <div class="logo"><a href="index.html" style="text-decoration: none; color: #fff;">Jim Mbugua Art</a></div>
       <ul class="nav-menu">
-        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="index.html" class="nav-link active">Home</a></li>
         <li><a href="gallery.html" class="nav-link">Gallery</a></li>
-        <li><a href="sale.html" class="nav-link" style="color:#ffb400;">Sale 🔥</a></li>
+        <li><a href="sale.html" class="nav-link" style="color:#ffb400; font-weight:600;">Sale 🔥</a></li>
         <li><a href="about.html" class="nav-link">About</a></li>
         <li><a href="contact.html" class="nav-link">Contact</a></li>
       </ul>
@@ -27,37 +85,50 @@
     </div>
   </nav>
 
-  <!-- Hero Section with overlay slideshow -->
+  <!-- Hero Section -->
   <section id="home" class="hero">
+    <!-- Slideshow sits BEHIND the overlay -->
+    <div class="artwork-slideshow">
+      <img src="artwork1.jpg.jpg" class="slide active" alt="Artwork 1" />
+      <img src="artwork2.jpg.jpg" class="slide" alt="Artwork 2" />
+      <img src="artwork3.jpg.jpg" class="slide" alt="Artwork 3" />
+      <img src="artwork4.jpg.jpg" class="slide" alt="Artwork 4" />
+      <img src="artwork5.jpg.jpg" class="slide" alt="Artwork 5" />
+      <img src="artwork6.jpg.jpg" class="slide" alt="Artwork 6" />
+      <img src="artwork7.jpg.jpg" class="slide" alt="Artwork 7" />
+    </div>
+    <!-- Dark overlay + text sits ON TOP -->
     <div class="hero-overlay">
-      <div class="artwork-slideshow">
-        <img src="artwork1.jpg.jpg" class="slide" />
-        <img src="artwork2.jpg.jpg" class="slide" />
-        <img src="artwork3.jpg.jpg" class="slide" />
-        <img src="artwork4.jpg.jpg" class="slide" />
-        <img src="artwork5.jpg.jpg" class="slide" />
-        <img src="artwork6.jpg.jpg" class="slide" />
-        <img src="artwork7.jpg.jpg" class="slide" />
-      </div>
       <div class="hero-content">
         <h1>Jim Mbugua Art</h1>
-        <p class="quote">"Art is how we decorate space; Music is how we decorate time." - Jean-Michel Basquiat</p>
+        <p class="quote">"Art is how we decorate space; Music is how we decorate time." — Jean-Michel Basquiat</p>
       </div>
     </div>
   </section>
-    
+
   <!-- CTA Section -->
   <section class="cta-section">
     <a href="gallery.html" class="cta-button">Explore Gallery</a>
-     <a href="sale.html" class="cta-button" style="margin-left:12px; background:#ffb400; color:#0a0a0a; border-color:#ffb400;">Cinematic Prints — On Sale</a>
+    <a href="sale.html" class="cta-button" style="margin-left:12px; background:#ffb400; color:#0a0a0a; border-color:#ffb400;">Cinematic Prints — On Sale</a>
   </section>
 
   <footer>
     <p>&copy; 2024 Jim Mbugua Art. All rights reserved.</p>
   </footer>
 
-  <!-- Lightbox JS (if used in gallery.html) -->
-  <script src="https://cdn.jsdelivr.net/npm/lightbox2/dist/js/lightbox.min.js"></script>
   <script src="script.js"></script>
+  <script>
+    // Slideshow — one image at a time, crossfading every 3.5s
+    (function () {
+      const slides = document.querySelectorAll('.artwork-slideshow .slide');
+      let current = 0;
+      if (slides.length === 0) return;
+      setInterval(function () {
+        slides[current].classList.remove('active');
+        current = (current + 1) % slides.length;
+        slides[current].classList.add('active');
+      }, 3500);
+    })();
+  </script>
 </body>
 </html>
