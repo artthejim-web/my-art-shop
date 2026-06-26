@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* ── Sale Page Styles ── */
         .sale-hero {
             background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
             padding: 120px 20px 60px;
@@ -42,10 +41,7 @@
             line-height: 1.15;
             margin: 0 0 16px;
         }
-        .sale-hero h1 span {
-            color: #ffb400;
-            font-weight: 700;
-        }
+        .sale-hero h1 span { color: #ffb400; font-weight: 700; }
         .sale-hero p.subtitle {
             color: rgba(255,255,255,0.6);
             font-size: 1rem;
@@ -53,14 +49,6 @@
             margin: 0 auto 12px;
             line-height: 1.7;
         }
-        .sale-hero .countdown-label {
-            color: #ffb400;
-            font-size: 0.75rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            margin-top: 28px;
-        }
-        /* ── Sale Grid ── */
         .sale-section {
             background: #0f0f0f;
             padding: 60px 20px 80px;
@@ -116,10 +104,10 @@
             display: block;
             filter: brightness(0.88);
             transition: filter 0.3s ease;
+            background: #222;
+            min-height: 180px;
         }
-        .sale-card:hover .sale-card-image {
-            filter: brightness(1);
-        }
+        .sale-card:hover .sale-card-image { filter: brightness(1); }
         .sale-discount-tag {
             position: absolute;
             top: 14px;
@@ -133,9 +121,7 @@
             border-radius: 2px;
             text-transform: uppercase;
         }
-        .sale-card-info {
-            padding: 18px 20px 22px;
-        }
+        .sale-card-info { padding: 18px 20px 22px; }
         .sale-card-info h3 {
             color: #fff;
             font-size: 1rem;
@@ -155,16 +141,8 @@
             gap: 10px;
             margin-bottom: 16px;
         }
-        .sale-price-now {
-            color: #ffb400;
-            font-size: 1.1rem;
-            font-weight: 700;
-        }
-        .sale-price-was {
-            color: rgba(255,255,255,0.3);
-            font-size: 0.85rem;
-            text-decoration: line-through;
-        }
+        .sale-price-now { color: #ffb400; font-size: 1.1rem; font-weight: 700; }
+        .sale-price-was { color: rgba(255,255,255,0.3); font-size: 0.85rem; text-decoration: line-through; }
         .sale-order-btn {
             display: flex;
             align-items: center;
@@ -182,13 +160,8 @@
             border-radius: 2px;
             transition: background 0.2s ease, border-color 0.2s ease;
         }
-        .sale-order-btn:hover {
-            background: #25D366;
-            border-color: #25D366;
-            color: #fff;
-        }
+        .sale-order-btn:hover { background: #25D366; border-color: #25D366; color: #fff; }
         .sale-order-btn i { font-size: 1rem; }
-        /* ── Note banner ── */
         .sale-note {
             background: rgba(255,180,0,0.07);
             border-top: 1px solid rgba(255,180,0,0.2);
@@ -231,7 +204,7 @@
         <h1>Cinematic Photography<br><span>Prints on Sale</span></h1>
         <p class="subtitle">
             Fine art prints from Kenya's streets, landscapes, and quiet moments —
-            printed on premium archival paper. All shot and edited by me. Decorate that wall now.😊
+            printed on premium archival paper. All shot and edited by me. Decorate that wall now. 😊
         </p>
     </section>
 
@@ -249,206 +222,39 @@
     <div class="sale-note">
         Looking for original artworks and commissions?
         <a href="gallery.html">Visit the main gallery →</a>
-    </div> class="sale-grid" id="saleGrid"></div>
+    </div>
 
     <footer>
         <p>&copy; 2024 Jim Mbugua Art. All rights reserved.</p>
     </footer>
+
     <script src="script.js"></script>
     <script>
         const cinematicPrints = [
-            {
-                medium: "Fine Art Print",
-                size: "A3 (297 × 420 mm)",
-                image: "1779614526190.tuxpi.jpg",
-                originalPrice: 1500,
-                salePrice: 1000,
-                discount: "30% OFF"
-            },
-            {
-                medium: "Fine Art Print",
-                size: "A3 (297 × 420 mm)",
-                image: "1779614526203.tuxpi.jpg",
-                originalPrice: 1500,
-                salePrice: 1000,
-                discount: "30% OFF"
-            },
-            {
-                medium: "Fine Art Print",
-                size: "A3 (297 × 420 mm)",
-                image: "1781431756263.tuxpi.jpg",
-                originalPrice: 1500,
-                salePrice: 1000,
-                discount: "30% OFF"
-            },
-            {
-                medium: "Fine Art Print",
-                size: "A3 (297 × 420 mm)",
-                image: "1781973214846.tuxpi.jpg",
-                originalPrice: 1500,
-                salePrice: 1000,
-                discount: "30% OFF"
-            },
-            {
-                medium: "Fine Art Print",
-                size: "A3 (297 × 420 mm)",
-                image: "1781973214851.tuxpi.jpg",
-                originalPrice: 1500,
-                salePrice: 1000,
-                discount: "30% OFF"
-            },
-            {
-                medium: "Fine Art Print",
-                size: "A3 (297 × 420 mm)",
-                image: "IMG_20251211_123304.tuxpi.jpg",
-                originalPrice: 1500,
-                salePrice: 1000,
-                discount: "30% OFF"
-              },
-            {
-                medium: "Fine Art Print",
-                size: "A3 (297 × 420 mm)",
-                image: "IMG_20251211_181512.tuxpi.jpg",
-                originalPrice: 1500,
-                salePrice: 1000,
-                discount: "30% OFF" 
-             },
-            {
-                medium: "Fine Art Print",
-                size: "A3 (297 × 420 mm)",
-                image: "IMG_20251211_193328.tuxpi.jpg",
-                originalPrice: 1500,
-                salePrice: 1000,
-                discount: "30% OFF" 
-             },
-            {
-                medium: "Fine Art Print",
-                size: "A3 (297 × 420 mm)",
-                image: "IMG_20251211_184501.tuxpi.jpg",
-                originalPrice: 1500,
-                salePrice: 1000,
-                discount: "30% OFF"
-              },
-            {
-                medium: "Fine Art Print",
-                size: "A3 (297 × 420 mm)",
-                image: "IMG_20251211_215244.tuxpi.jpg",
-                originalPrice: 1500,
-                salePrice: 1000,
-                discount: "30% OFF" 
-             },
-            {
-                medium: "Fine Art Print",
-                size: "A3 (297 × 420 mm)",
-                image: "IMG_20251211_185305.tuxpi.jpg",
-                originalPrice: 1500,
-                salePrice: 1000,
-                discount: "30% OFF"
-               },
-            {
-                medium: "Fine Art Print",
-                size: "A3 (297 × 420 mm)",
-                image: "IMG_20251211_173528.tuxpi.jpg",
-                originalPrice: 1500,
-                salePrice: 1000,
-                discount: "30% OFF"
-              },
-            {
-                medium: "Fine Art Print",
-                size: "A3 (297 × 420 mm)",
-                image: "IMG_20251211_182119.tuxpi.jpg",
-                originalPrice: 1500,
-                salePrice: 1000,
-                discount: "30% OFF" 
-             },
-            {
-                medium: "Fine Art Print",
-                size: "A3 (297 × 420 mm)",
-                image: "IMG_20251211_183231.tuxpi.jpg",
-                originalPrice: 1500,
-                salePrice: 1000,
-                discount: "30% OFF" 
-             },
-            {
-                medium: "Fine Art Print",
-                size: "A3 (297 × 420 mm)",
-                image: "IMG_20251211_181047.tuxpi.jpg",
-                originalPrice: 1500,
-                salePrice: 1000,
-                discount: "30% OFF"
-              },
-            {
-                medium: "Fine Art Print",
-                size: "A3 (297 × 420 mm)",
-                image: "IMG_20251211_182931.tuxpi.jpg",
-                originalPrice: 1500,
-                salePrice: 1000,
-                discount: "30% OFF" 
-             },
-            {
-                medium: "Fine Art Print",
-                size: "A3 (297 × 420 mm)",
-                image: "IMG_20251211_173145.tuxpi.jpg",
-                originalPrice: 1500,
-                salePrice: 1000,
-                discount: "30% OFF"
-              },
-            {
-                medium: "Fine Art Print",
-                size: "A3 (297 × 420 mm)",
-                image: "IMG_20251211_172055.tuxpi.jpg",
-                originalPrice: 1500,
-                salePrice: 1000,
-                discount: "30% OFF"
-              },
-            {
-                medium: "Fine Art Print",
-                size: "A3 (297 × 420 mm)",
-                image: "IMG_20251211_173119.tuxpi.jpg",
-                originalPrice: 1500,
-                salePrice: 1000,
-                discount: "30% OFF" 
-             },
-            {
-                medium: "Fine Art Print",
-                size: "A3 (297 × 420 mm)",
-                image: "IMG_20251211_173257.tuxpi.jpg",
-                originalPrice: 1500,
-                salePrice: 1000,
-                discount: "30% OFF" 
-             },
-            {
-                medium: "Fine Art Print",
-                size: "A3 (297 × 420 mm)",
-                image: "IMG_20251211_175454.tuxpi.jpg",
-                originalPrice: 1500,
-                salePrice: 1000,
-                discount: "30% OFF"
-              },
-            {
-                medium: "Fine Art Print",
-                size: "A3 (297 × 420 mm)",
-                image: "IMG_20251211_155405.tuxpi.jpg",
-                originalPrice: 1500,
-                salePrice: 1000,
-                discount: "30% OFF" 
-             },
-            {
-                medium: "Fine Art Print",
-                size: "A3 (297 × 420 mm)",
-                image: "IMG_20251211_184212.tuxpi.jpg",
-                originalPrice: 1500,
-                salePrice: 1000,
-                discount: "30% OFF"
-               },
-            {
-                medium: "Fine Art Print",
-                size: "A3 (297 × 420 mm)",
-                image: "IMG_20251211_151441.tuxpi.jpg",
-                originalPrice: 1500,
-                salePrice: 1000,
-                discount: "30% OFF"
-              }
+            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "1779614526190.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
+            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "1779614526203.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
+            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "1781431756263.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
+            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "1781973214846.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
+            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "1781973214851.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
+            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_20251211_123304.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
+            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_20251211_181512.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
+            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_20251211_193328.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
+            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_20251211_184501.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
+            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_20251211_215244.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
+            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_20251211_185305.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
+            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_20251211_173528.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
+            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_20251211_182119.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
+            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_20251211_183231.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
+            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_20251211_181047.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
+            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_20251211_182931.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
+            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_20251211_173145.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
+            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_20251211_172055.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
+            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_20251211_173119.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
+            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_20251211_173257.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
+            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_20251211_175454.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
+            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_20251211_155405.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
+            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_20251211_184212.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
+            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_20251211_151441.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" }
         ];
 
         const WHATSAPP_NUMBER = "254103142621";
@@ -458,9 +264,10 @@
             const countEl = document.getElementById('saleCount');
             if (!grid) return;
             countEl.textContent = `${cinematicPrints.length} prints`;
-            cinematicPrints.forEach((print) => {
+
+            cinematicPrints.forEach((print, index) => {
                 const msg = encodeURIComponent(
-                    `Hi Jim! I'm interested in ordering the cinematic print (${print.size}) at KES ${print.salePrice.toLocaleString()}. Please let me know how to proceed.`
+                    `Hi Jim! I'm interested in ordering Cinematic Print #${index + 1} (${print.size}) at KES ${print.salePrice.toLocaleString()}. Please let me know how to proceed.`
                 );
                 const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
                 const card = document.createElement('div');
@@ -470,7 +277,7 @@
                     <img class="sale-card-image" src="${print.image}" alt="Cinematic Print ${index + 1}" loading="lazy"
                          onerror="this.style.background='#222';this.style.minHeight='180px'">
                     <div class="sale-card-info">
-                        <h3>Cinematic Print #${cinematicPrints.indexOf(print) + 1}</h3>
+                        <h3>Cinematic Print #${index + 1}</h3>
                         <p class="meta">${print.medium} · ${print.size}</p>
                         <div class="sale-price-row">
                             <span class="sale-price-now">KES ${print.salePrice.toLocaleString()}</span>
