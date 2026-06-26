@@ -26,6 +26,7 @@
       object-fit: cover;
       opacity: 0;
       transition: opacity 1.2s ease-in-out;
+      mix-blend-mode: normal;
     }
     .artwork-slideshow .slide.active {
       opacity: 1;
@@ -36,7 +37,6 @@
       background: rgba(0,0,0,0.45);
       z-index: 1;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
     }
@@ -47,7 +47,7 @@
       padding: 0 20px;
     }
     .hero-content h1 {
-      color: #ffffff;
+      color: #fff;
       font-size: clamp(2rem, 6vw, 4rem);
       font-weight: 300;
       letter-spacing: 0.08em;
@@ -56,7 +56,7 @@
     }
     .hero-content .quote {
       color: #ffcc00;
-      font-size: clamp(0.9rem, 2.2vw, 1.15rem);
+      font-size: clamp(0.9rem, 2.2vw, 1.2rem);
       font-style: italic;
       font-weight: 500;
       max-width: 600px;
@@ -69,7 +69,9 @@
 <body>
   <nav class="navbar">
     <div class="nav-container">
-      <div class="logo"><a href="index.html" style="text-decoration: none; color: #fff;">Jim Mbugua Art</a></div>
+      <div class="logo">
+        <a href="index.html" style="text-decoration: none; color: #fff;">Jim Mbugua Art</a>
+      </div>
       <ul class="nav-menu">
         <li><a href="index.html" class="nav-link active">Home</a></li>
         <li><a href="gallery.html" class="nav-link">Gallery</a></li>
@@ -85,9 +87,8 @@
     </div>
   </nav>
 
-  <!-- Hero Section -->
   <section id="home" class="hero">
-    <!-- Slideshow sits BEHIND the overlay -->
+    <!-- Slideshow BEHIND the overlay -->
     <div class="artwork-slideshow">
       <img src="artwork1.jpg.jpg" class="slide active" alt="Artwork 1" />
       <img src="artwork2.jpg.jpg" class="slide" alt="Artwork 2" />
@@ -97,7 +98,7 @@
       <img src="artwork6.jpg.jpg" class="slide" alt="Artwork 6" />
       <img src="artwork7.jpg.jpg" class="slide" alt="Artwork 7" />
     </div>
-    <!-- Dark overlay + text sits ON TOP -->
+    <!-- Dark overlay + text ON TOP -->
     <div class="hero-overlay">
       <div class="hero-content">
         <h1>Jim Mbugua Art</h1>
@@ -106,7 +107,6 @@
     </div>
   </section>
 
-  <!-- CTA Section -->
   <section class="cta-section">
     <a href="gallery.html" class="cta-button">Explore Gallery</a>
     <a href="sale.html" class="cta-button" style="margin-left:12px; background:#ffb400; color:#0a0a0a; border-color:#ffb400;">Cinematic Prints — On Sale</a>
@@ -118,7 +118,6 @@
 
   <script src="script.js"></script>
   <script>
-    // Slideshow — one image at a time, crossfading every 3.5s
     (function () {
       const slides = document.querySelectorAll('.artwork-slideshow .slide');
       let current = 0;
