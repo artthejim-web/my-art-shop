@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinematic Prints Sale - Jim Mbugua Art</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ── Sale Page Styles ── */
+        .sale-hero {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            padding: 120px 20px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .sale-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(255, 180, 0, 0.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .sale-badge {
+            display: inline-block;
+            background: #ffb400;
+            color: #0a0a0a;
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            padding: 6px 18px;
+            border-radius: 2px;
+            margin-bottom: 20px;
+        }
+        .sale-hero h1 {
+            font-size: clamp(2rem, 6vw, 3.8rem);
+            color: #fff;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            line-height: 1.15;
+            margin: 0 0 16px;
+        }
+        .sale-hero h1 span {
+            color: #ffb400;
+            font-weight: 700;
+        }
+        .sale-hero p.subtitle {
+            color: rgba(255,255,255,0.6);
+            font-size: 1rem;
+            max-width: 480px;
+            margin: 0 auto 12px;
+            line-height: 1.7;
+        }
+        .sale-hero .countdown-label {
+            color: #ffb400;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-top: 28px;
+        }
+        /* ── Sale Grid ── */
+        .sale-section {
+            background: #0f0f0f;
+            padding: 60px 20px 80px;
+        }
+        .sale-section .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .sale-section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+        .sale-section-header h2 {
+            color: #fff;
+            font-size: 1.4rem;
+            font-weight: 400;
+            letter-spacing: 0.06em;
+            margin: 0;
+        }
+        .sale-section-header .divider {
+            flex: 1;
+            height: 1px;
+            background: rgba(255,255,255,0.1);
+        }
+        .sale-section-header .count {
+            color: rgba(255,255,255,0.35);
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+        }
+        .sale-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        .sale-card {
+            background: #181818;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .sale-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+        }
+        .sale-card-image {
+            width: 100%;
+            aspect-ratio: 3/2;
+            object-fit: cover;
+            display: block;
+            filter: brightness(0.88);
+            transition: filter 0.3s ease;
+        }
+        .sale-card:hover .sale-card-image {
+            filter: brightness(1);
+        }
+        .sale-discount-tag {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            background: #ffb400;
+            color: #0a0a0a;
+            font-size: 0.68rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            padding: 4px 10px;
+            border-radius: 2px;
+            text-transform: uppercase;
+        }
+        .sale-card-info {
+            padding: 18px 20px 22px;
+        }
+        .sale-card-info h3 {
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 500;
+            margin: 0 0 4px;
+            letter-spacing: 0.02em;
+        }
+        .sale-card-info .meta {
+            color: rgba(255,255,255,0.4);
+            font-size: 0.78rem;
+            margin: 0 0 14px;
+            letter-spacing: 0.04em;
+        }
+        .sale-price-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+        .sale-price-now {
+            color: #ffb400;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+        .sale-price-was {
+            color: rgba(255,255,255,0.3);
+            font-size: 0.85rem;
+            text-decoration: line-through;
+        }
+        .sale-order-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 10px 0;
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.15);
+            color: #fff;
+            font-size: 0.82rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 2px;
+            transition: background 0.2s ease, border-color 0.2s ease;
+        }
+        .sale-order-btn:hover {
+            background: #25D366;
+            border-color: #25D366;
+            color: #fff;
+        }
+        .sale-order-btn i { font-size: 1rem; }
+        /* ── Note banner ── */
+        .sale-note {
+            background: rgba(255,180,0,0.07);
+            border-top: 1px solid rgba(255,180,0,0.2);
+            padding: 20px;
+            text-align: center;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.82rem;
+            letter-spacing: 0.04em;
+        }
+        .sale-note a { color: #ffb400; text-decoration: none; }
+        .sale-note a:hover { text-decoration: underline; }
+        @media (max-width: 600px) {
+            .sale-grid { grid-template-columns: 1fr; }
+            .sale-hero { padding: 100px 16px 50px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html" style="text-decoration: none; color: #fff;">Jim Mbugua Art</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="sale.html" class="nav-link active">Sale</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="sale-hero">
+        <div class="sale-badge">Limited Time</div>
+        <h1>Cinematic Photography<br><span>Prints on Sale</span></h1>
+        <p class="subtitle">
+            Fine art prints from Nairobi's streets, landscapes, and quiet moments —
+            printed on premium archival paper.
+        </p>
+    </section>
+
+    <section class="sale-section">
+        <div class="container">
+            <div class="sale-section-header">
+                <h2>Cinematic Prints</h2>
+                <div class="divider"></div>
+                <span class="count" id="saleCount"></span>
+            </div>
+            <div class="sale-grid" id="saleGrid"></div>
+        </div>
+    </section>
+
+    <div class="sale-note">
+        Looking for original artworks and commissions?
+        <a href="gallery.html">Visit the main gallery →</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Jim Mbugua Art. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // ── UPDATE THIS ARRAY with your real cinematic photo filenames, titles, and prices ──
+        const cinematicPrints = [
+            {
+                title: "Golden Hour, Nairobi CBD",
+                medium: "Fine Art Print",
+                size: "A3 (297 × 420 mm)",
+                image: "artwork8.jpg.jpg",
+                originalPrice: 5000,
+                salePrice: 3500,
+                discount: "30% OFF"
+            },
+            {
+                title: "Matatu Culture",
+                medium: "Fine Art Print",
+                size: "A3 (297 × 420 mm)",
+                image: "artwork9.jpg.jpg",
+                originalPrice: 5000,
+                salePrice: 3500,
+                discount: "30% OFF"
+            },
+            {
+                title: "Karura Mist",
+                medium: "Fine Art Print",
+                size: "A4 (210 × 297 mm)",
+                image: "artwork10.jpg.jpg",
+                originalPrice: 3500,
+                salePrice: 2500,
+                discount: "28% OFF"
+            },
+            {
+                title: "Night Market Lights",
+                medium: "Fine Art Print",
+                size: "A3 (297 × 420 mm)",
+                image: "artwork11.jpg.jpg",
+                originalPrice: 5000,
+                salePrice: 3500,
+                discount: "30% OFF"
+            },
+            {
+                title: "Silhouette at Dusk",
+                medium: "Fine Art Print",
+                size: "A2 (420 × 594 mm)",
+                image: "artwork12.jpg.jpg",
+                originalPrice: 8000,
+                salePrice: 5500,
+                discount: "31% OFF"
+            },
+            {
+                title: "Rain on Glass",
+                medium: "Fine Art Print",
+                size: "A4 (210 × 297 mm)",
+                image: "artwork13.jpg.jpg",
+                originalPrice: 3500,
+                salePrice: 2500,
+                discount: "28% OFF"
+            }
+        ];
+
+        const WHATSAPP_NUMBER = "254103142621";
+
+        function buildSaleCards() {
+            const grid = document.getElementById('saleGrid');
+            const countEl = document.getElementById('saleCount');
+            if (!grid) return;
+            countEl.textContent = `${cinematicPrints.length} prints`;
+            cinematicPrints.forEach((print) => {
+                const msg = encodeURIComponent(
+                    `Hi Jim! I'm interested in ordering the cinematic print "${print.title}" (${print.size}) at KES ${print.salePrice.toLocaleString()}. Please let me know how to proceed.`
+                );
+                const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
+                const card = document.createElement('div');
+                card.className = 'sale-card';
+                card.innerHTML = `
+                    <span class="sale-discount-tag">${print.discount}</span>
+                    <img class="sale-card-image" src="${print.image}" alt="${print.title}" loading="lazy"
+                         onerror="this.style.background='#222';this.style.minHeight='180px'">
+                    <div class="sale-card-info">
+                        <h3>${print.title}</h3>
+                        <p class="meta">${print.medium} · ${print.size}</p>
+                        <div class="sale-price-row">
+                            <span class="sale-price-now">KES ${print.salePrice.toLocaleString()}</span>
+                            <span class="sale-price-was">KES ${print.originalPrice.toLocaleString()}</span>
+                        </div>
+                        <a href="${waLink}" target="_blank" class="sale-order-btn">
+                            <i class="fab fa-whatsapp"></i> Order via WhatsApp
+                        </a>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        buildSaleCards();
+    </script>
+</body>
+</html>
