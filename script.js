@@ -67,7 +67,7 @@ const galleryItems = [
         title: "Untitled",
         medium: "Charcoal, Pastels & Watercolors",
         size: "A2 (500 x 600 mm)",
-        price: "KSh. 15,000",
+        price: "KSh. 7,500",
         image: "artwork10.jpg.jpg"
     },
     {
