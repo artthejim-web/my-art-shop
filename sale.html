@@ -461,7 +461,7 @@
             countEl.textContent = `${cinematicPrints.length} prints`;
             cinematicPrints.forEach((print) => {
                 const msg = encodeURIComponent(
-                    `Hi Jim! I'm interested in ordering the cinematic print "${print.title}" (${print.size}) at KES ${print.salePrice.toLocaleString()}. Please let me know how to proceed.`
+                    `Hi Jim! I'm interested in ordering the cinematic print (${print.size}) at KES ${print.salePrice.toLocaleString()}. Please let me know how to proceed.`
                 );
                 const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
                 const card = document.createElement('div');
@@ -471,7 +471,7 @@
                     <img class="sale-card-image" src="${print.image}" alt="${print.title}" loading="lazy"
                          onerror="this.style.background='#222';this.style.minHeight='180px'">
                     <div class="sale-card-info">
-                        <h3>${print.title}</h3>
+                        <h3>Cinematic Print #${cinematicPrints.indexOf(print) + 1}</h3>
                         <p class="meta">${print.medium} · ${print.size}</p>
                         <div class="sale-price-row">
                             <span class="sale-price-now">KES ${print.salePrice.toLocaleString()}</span>
