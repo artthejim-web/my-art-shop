@@ -3,91 +3,91 @@ const galleryItems = [
     {
         title: "Eminem",
         medium: "Charcoal & Graphite",
-        size: "A3 (297 x 420 mm)",
+        size: "A3 (29.7 x 42 cm)",
         price: "KSh. 5,600",
         image: "artwork1.jpg.jpg"
     },
     {
         title: "SHE",
         medium: "Charcoal, Graphite & Colored Pencils",
-        size: "A3 (297 x 420 mm)",
+        size: "A3 (29.7 x 42 cm)",
         price: "KSh. 5,600",
         image: "artwork2.jpg.jpg"
     },
     {
         title: "Untitled",
         medium: "Colored Pencils",
-        size: "A4 (210 x 297 mm)",
+        size: "A4 (21 x 29.7 cm)",
         price: "KSh. 3,000",
         image: "artwork3.jpg.jpg"
     },
     {
         title: "Untitled",
         medium: "Colored Pencils",
-        size: "A5 (200 x 200 mm)",
+        size: "A5 (20 x 20 cm)",
         price: "KSh. 3,000",
         image: "artwork4.jpg.jpg"
     },
     {
         title: "Untitled",
         medium: "Charcoal & Graphite",
-        size: "A3 (297 x 420 mm)",
+        size: "A3 (29.7 x 42 cm)",
         price: "KSh. 5,600",
         image: "artwork5.jpg.jpg"
     },
     {
         title: "Eccedentesiast",
         medium: "Charcoal, Graphite & Pastels",
-        size: "A3 (297 x 420 mm)",
+        size: "A3 (29.7 x 42 cm)",
         price: "KSh. 5,600",
         image: "artwork6.jpg.jpg"
     },
     {
         title: "Bloom in Silence",
         medium: "Charcoal, Graphite & Colored Pencils",
-        size: "A3 (297 x 420 mm)",
+        size: "A3 (29.7 x 42 cm)",
         price: "KSh. 5,600",
         image: "artwork7.jpg.jpg"
     },
     {
         title: "Untitled",
         medium: "Charcoal & Graphite",
-        size: "A4 (210 x 297 mm)",
+        size: "A4 (21 x 29.7 cm)",
         price: "KSh. 3,000",
         image: "artwork8.jpg.jpg"
     },
     {
         title: "Untitled",
         medium: "Charcoal & Pastels",
-        size: "A4 (210 x 297 mm)",
+        size: "A4 (21 x 29.7 cm)",
         price: "KSh. 3,000",
         image: "artwork9.jpg.jpg"
     },
     {
         title: "Untitled",
         medium: "Charcoal, Pastels & Watercolors",
-        size: "A2 (500 x 600 mm)",
+        size: "A2 (50 x 60 cm)",
         price: "KSh. 7,500",
         image: "artwork10.jpg.jpg"
     },
     {
         title: "Untitled",
         medium: "Charcoal & Pastels",
-        size: "A3 (297 x 420 mm)",
+        size: "A3 (29.7 x 42 cm)",
         price: "KSh. 5,600",
         image: "artwork11.jpg.jpg"
     },
     {
         title: "Untitled",
         medium: "Charcoal & Pastels",
-        size: "A4 (210 x 297 mm)",
+        size: "A4 (21 x 29.7 cm)",
         price: "KSh. 3,000",
         image: "artwork12.jpg.jpg"
     },
     {
         title: "Untitled",
         medium: "Mixed Media",
-        size: "A3 (297 x 420 mm)",
+        size: "A3 (29.7 x 42 cm)",
         price: "KSh. 5,600",
         image: "artwork13.jpg.jpg"
     }
