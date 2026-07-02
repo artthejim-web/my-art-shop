@@ -23,16 +23,19 @@ body {
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 1rem 2rem;
+    padding: 0.75rem 1.2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1rem;
 }
 
 .logo {
-    font-size: 1.8rem;
+    font-size: 1.2rem;
     font-weight: bold;
     color: #fff;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .nav-menu {
@@ -46,6 +49,7 @@ body {
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s;
+    white-space: nowrap;
 }
 
 .nav-link:hover {
@@ -56,6 +60,7 @@ body {
     display: none;
     flex-direction: column;
     cursor: pointer;
+    flex-shrink: 0;
 }
 
 .hamburger span {
@@ -77,7 +82,6 @@ body {
     justify-content: center;
 }
 
-/* Slideshow sits at the very back */
 .artwork-slideshow {
     position: absolute;
     inset: 0;
@@ -101,7 +105,6 @@ body {
     opacity: 1;
 }
 
-/* Dark tint overlay sits above slideshow */
 .hero-overlay {
     position: absolute;
     inset: 0;
@@ -112,7 +115,6 @@ body {
     justify-content: center;
 }
 
-/* Text sits on top of everything */
 .hero-content {
     position: relative;
     z-index: 2;
@@ -385,9 +387,7 @@ body {
     z-index: 1001;
 }
 
-.close-btn:hover {
-    color: #ffd700;
-}
+.close-btn:hover { color: #ffd700; }
 
 .lightbox-prev,
 .lightbox-next {
@@ -484,9 +484,7 @@ body {
     text-align: center;
 }
 
-.contact .container {
-    max-width: 1200px;
-}
+.contact .container { max-width: 1200px; }
 
 .contact h2 {
     font-size: 2.5rem;
@@ -518,9 +516,7 @@ body {
     transition: transform 0.3s;
 }
 
-.contact-link:hover {
-    transform: scale(1.1);
-}
+.contact-link:hover { transform: scale(1.1); }
 
 .contact-link i {
     font-size: 3rem;
@@ -528,9 +524,7 @@ body {
     transition: color 0.3s;
 }
 
-.contact-link:hover i {
-    color: #ffd700;
-}
+.contact-link:hover i { color: #ffd700; }
 
 /* Footer */
 footer {
@@ -545,38 +539,89 @@ footer {
     from { opacity: 0; transform: translateY(-30px); }
     to { opacity: 1; transform: translateY(0); }
 }
-
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
 }
-
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
 }
-
 @keyframes slideUp {
     from { opacity: 0; transform: translateY(50px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsive */
+/* ── Mobile (768px and below) ── */
 @media (max-width: 768px) {
+
+    /* Navbar: shrink logo, show hamburger, hide menu */
+    .logo {
+        font-size: 1rem;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #1a1a1a;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 0;
+        gap: 1rem;
+        z-index: 99;
+    }
+
+    .nav-menu.open {
+        display: flex;
+    }
+
+    /* Hero: full height on mobile, no gap */
+    .hero {
+        height: 100svh; /* uses small viewport height to avoid browser chrome gap */
+    }
+
     .hero-content h1 { font-size: 2rem; }
     .hero-content .quote { font-size: 1rem; }
-    .hamburger { display: flex; }
-    .nav-menu { display: none; }
+
+    /* CTA buttons stack on mobile */
+    .cta-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
+        padding: 1.5rem;
+    }
+
+    .cta-button {
+        margin-left: 0 !important;
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
+    }
+
+    /* Gallery */
     .gallery-grid { grid-template-columns: 1fr; }
+
+    /* About */
     .about-content { grid-template-columns: 1fr; gap: 2rem; }
+
+    /* Contact */
     .contact-links { gap: 2rem; }
     .gallery h2, .about h2, .contact h2 { font-size: 1.8rem; }
     .contact-link span { font-size: 0.9rem; }
+
+    /* Lightbox */
     .lightbox-content { grid-template-columns: 1fr; padding: 20px; gap: 20px; }
     .lightbox-image-container { max-height: 400px; }
     #lightboxImage { max-height: 400px; }
     .lightbox-info h2 { font-size: 1.5rem; }
     .lightbox-prev, .lightbox-next { font-size: 20px; padding: 10px; }
     .close-btn { font-size: 30px; }
-    .hero { height: 60vh; }
 }
