@@ -90,6 +90,13 @@ const galleryItems = [
         size: "A3 (29.7 x 42 cm)",
         price: "KSh. 5,600",
         image: "artwork13.jpg.jpg"
+    },
+    {
+        title: "The Boy Who Dreamt",
+        medium: "Mixed Media",
+        size: "A2 (60 x 74 cm)",
+        price: "KSh. 7,500",
+        image: "1782860311019.tuxpi.jpg"
     }
 ];
 
