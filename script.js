@@ -42,6 +42,13 @@ const galleryItems = [
         price: "KSh. 5,600",
         image: "artwork6.jpg.jpg"
     },
+     {
+        title: "Slim Shady",
+        medium: "Charcoal, Graphite & Pastels",
+        size: "A3 (21 x 29.7 cm)",
+        price: "KSh. 3,000",
+        image: "1783017867133.tuxpi.jpg"
+    }
     {
         title: "Bloom in Silence",
         medium: "Charcoal, Graphite & Colored Pencils",
