@@ -6,22 +6,256 @@
     <title>Gallery - Jim Mbugua Art</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ── Commissions Section ── */
+        .commissions {
+            padding: 80px 2rem;
+            background: #1a1a1a;
+        }
+
+        .commissions .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .commissions-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .commissions-header .tag {
+            display: inline-block;
+            background: #d4af37;
+            color: #1a1a1a;
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            padding: 5px 16px;
+            border-radius: 2px;
+            margin-bottom: 16px;
+        }
+
+        .commissions-header h2 {
+            color: #fff;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 300;
+            letter-spacing: 0.04em;
+            margin-bottom: 12px;
+        }
+
+        .commissions-header h2 span {
+            color: #d4af37;
+            font-weight: 700;
+        }
+
+        .commissions-header p {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.95rem;
+            max-width: 480px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Size picker */
+        .size-picker {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .size-option {
+            position: relative;
+        }
+
+        .size-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .size-option label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 8px;
+            background: #242424;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: border-color 0.2s, background 0.2s;
+            text-align: center;
+        }
+
+        .size-option label .size-name {
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .size-option label .size-cm {
+            color: rgba(255,255,255,0.35);
+            font-size: 0.72rem;
+            letter-spacing: 0.04em;
+        }
+
+        .size-option input[type="radio"]:checked + label {
+            border-color: #d4af37;
+            background: rgba(212,175,55,0.08);
+        }
+
+        .size-option input[type="radio"]:checked + label .size-name {
+            color: #d4af37;
+        }
+
+        .size-option label:hover {
+            border-color: rgba(212,175,55,0.4);
+        }
+
+        /* Custom size fields — hidden unless custom is selected */
+        .custom-size-fields {
+            display: none;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .custom-size-fields.visible {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        /* Form fields */
+        .commission-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group label {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            background: #242424;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 4px;
+            padding: 12px 14px;
+            color: #fff;
+            font-size: 0.95rem;
+            font-family: inherit;
+            transition: border-color 0.2s;
+            width: 100%;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #d4af37;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255,255,255,0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 110px;
+        }
+
+        .form-hint {
+            color: rgba(255,255,255,0.3);
+            font-size: 0.75rem;
+            margin-top: 2px;
+        }
+
+        .commission-submit {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 15px;
+            background: #25D366;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+            margin-top: 8px;
+            text-decoration: none;
+        }
+
+        .commission-submit:hover {
+            background: #20ba5a;
+            transform: translateY(-2px);
+        }
+
+        .commission-submit i {
+            font-size: 1.2rem;
+        }
+
+        /* Pricing note */
+        .pricing-note {
+            margin-top: 24px;
+            padding: 16px 20px;
+            background: rgba(212,175,55,0.06);
+            border-left: 3px solid #d4af37;
+            border-radius: 2px;
+        }
+
+        .pricing-note p {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.82rem;
+            line-height: 1.6;
+        }
+
+        .pricing-note strong {
+            color: #d4af37;
+        }
+
+        @media (max-width: 600px) {
+            .size-picker {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .custom-size-fields.visible {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo"><a href="index.html" style="text-decoration: none; color: #fff;">Jim Mbugua Art</a></div>
+            <div class="logo">
+                <a href="index.html" style="text-decoration: none; color: #fff;">Jim Mbugua Art</a>
+            </div>
             <ul class="nav-menu">
                 <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
-                <li><a href="sale.html" class="nav-link" style="color:#ffb400;">Sale 🔥</a></li>
+                <li><a href="gallery.html" class="nav-link active">Gallery</a></li>
+                <li><a href="sale.html" class="nav-link" style="color:#ffb400; font-weight:600;">Sale 🔥</a></li>
                 <li><a href="about.html" class="nav-link">About</a></li>
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
             <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </div>
         </div>
     </nav>
@@ -31,7 +265,7 @@
         <div class="container">
             <h2>Gallery</h2>
             <div class="gallery-grid" id="galleryGrid">
-                <!-- Gallery items will be loaded here from JavaScript -->
+                <!-- Gallery items loaded by script.js -->
             </div>
         </div>
     </section>
@@ -39,12 +273,10 @@
     <!-- Lightbox Modal -->
     <div id="lightboxModal" class="lightbox-modal">
         <span class="close-btn" onclick="closeLightbox()">&times;</span>
-        
         <div class="lightbox-content">
             <div class="lightbox-image-container">
                 <img id="lightboxImage" src="" alt="">
             </div>
-            
             <div class="lightbox-info">
                 <h2 id="lightboxTitle"></h2>
                 <div class="lightbox-details">
@@ -57,23 +289,145 @@
                 </a>
             </div>
         </div>
-        
-        <!-- Navigation Arrows -->
         <a class="lightbox-prev" onclick="changeArtwork(-1)">&#10094;</a>
         <a class="lightbox-next" onclick="changeArtwork(1)">&#10095;</a>
-        
-        <!-- Artwork Counter -->
         <div class="lightbox-counter">
             <span id="artworkCounter"></span>
         </div>
     </div>
 
+    <!-- ── Commissions Section ── -->
+    <section class="commissions" id="commissions">
+        <div class="container">
+            <div class="commissions-header">
+                <div class="tag">Custom Order</div>
+                <h2>Order a <span>Commission</span></h2>
+                <p>Get a unique piece made just for you — portraits, animals, or anything you have in mind. Pick your size, share your reference, and Jim will bring it to life.</p>
+            </div>
+
+            <!-- Size Picker -->
+            <div class="size-picker">
+                <div class="size-option">
+                    <input type="radio" name="commissionSize" id="sizeA2" value="A2 (42 × 59.4 cm)">
+                    <label for="sizeA2">
+                        <span class="size-name">A2</span>
+                        <span class="size-cm">42 × 59.4 cm</span>
+                    </label>
+                </div>
+                <div class="size-option">
+                    <input type="radio" name="commissionSize" id="sizeA3" value="A3 (29.7 × 42 cm)" checked>
+                    <label for="sizeA3">
+                        <span class="size-name">A3</span>
+                        <span class="size-cm">29.7 × 42 cm</span>
+                    </label>
+                </div>
+                <div class="size-option">
+                    <input type="radio" name="commissionSize" id="sizeA4" value="A4 (21 × 29.7 cm)">
+                    <label for="sizeA4">
+                        <span class="size-name">A4</span>
+                        <span class="size-cm">21 × 29.7 cm</span>
+                    </label>
+                </div>
+                <div class="size-option">
+                    <input type="radio" name="commissionSize" id="sizeCustom" value="Custom">
+                    <label for="sizeCustom">
+                        <span class="size-name">Custom</span>
+                        <span class="size-cm">Your size</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Custom size inputs (shown only when Custom is selected) -->
+            <div class="custom-size-fields" id="customSizeFields">
+                <div class="form-group">
+                    <label>Width (cm)</label>
+                    <input type="number" id="customWidth" placeholder="e.g. 50" min="1">
+                </div>
+                <div class="form-group">
+                    <label>Height (cm)</label>
+                    <input type="number" id="customHeight" placeholder="e.g. 70" min="1">
+                </div>
+            </div>
+
+            <!-- Rest of the form -->
+            <div class="commission-form">
+                <div class="form-group">
+                    <label>Reference Photo Link</label>
+                    <input type="url" id="commissionRef" placeholder="Paste a Google Drive, iCloud or WhatsApp link to your photo">
+                    <span class="form-hint">Upload your reference photo to Google Drive or iCloud and paste the shared link here.</span>
+                </div>
+
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea id="commissionDesc" placeholder="Describe what you'd like — subject, style, any details or special requests..."></textarea>
+                </div>
+
+                <a id="commissionWhatsApp" href="#" target="_blank" class="commission-submit">
+                    <i class="fab fa-whatsapp"></i> Send Commission Request via WhatsApp
+                </a>
+            </div>
+
+            <div class="pricing-note">
+                <p>
+                    <strong>Pricing guide:</strong> A4 from KES 3,000 · A3 from KES 5,600 · A2 from KES 7,500 · Custom sizes quoted on request.<br>
+                    A 50% deposit is required to begin. Delivery time is typically 1–3 weeks depending on complexity.
+                </p>
+            </div>
+        </div>
+    </section>
+
     <footer>
-        <p>&copy; 2026 Jim Mbugua Art. All rights reserved.</p>
-        <p>Based in Nairobi, Kenya | Shipping Nationwide</p>
-        <p>WhatsApp: +254 103 142 621</p>
+        <p>&copy; 2024 Jim Mbugua Art. All rights reserved.</p>
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        const WHATSAPP = "254103142621";
+
+        // Show/hide custom size fields
+        document.querySelectorAll('input[name="commissionSize"]').forEach(function(radio) {
+            radio.addEventListener('change', function() {
+                const customFields = document.getElementById('customSizeFields');
+                if (this.value === 'Custom') {
+                    customFields.classList.add('visible');
+                } else {
+                    customFields.classList.remove('visible');
+                }
+                updateWhatsAppLink();
+            });
+        });
+
+        // Update WhatsApp link whenever any field changes
+        ['commissionRef', 'commissionDesc', 'customWidth', 'customHeight'].forEach(function(id) {
+            const el = document.getElementById(id);
+            if (el) el.addEventListener('input', updateWhatsAppLink);
+        });
+
+        function updateWhatsAppLink() {
+            const selectedSize = document.querySelector('input[name="commissionSize"]:checked');
+            let size = selectedSize ? selectedSize.value : 'A3 (29.7 × 42 cm)';
+
+            if (size === 'Custom') {
+                const w = document.getElementById('customWidth').value;
+                const h = document.getElementById('customHeight').value;
+                size = (w && h) ? 'Custom (' + w + ' × ' + h + ' cm)' : 'Custom (size TBD)';
+            }
+
+            const ref  = document.getElementById('commissionRef').value.trim();
+            const desc = document.getElementById('commissionDesc').value.trim();
+
+            let msg = 'Hi Jim! I\'d like to order a commission.\n\n';
+            msg += '📐 Size: ' + size + '\n';
+            if (ref)  msg += '🖼️ Reference photo: ' + ref + '\n';
+            if (desc) msg += '📝 Details: ' + desc + '\n';
+            msg += '\nPlease let me know the next steps!';
+
+            document.getElementById('commissionWhatsApp').href =
+                'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(msg);
+        }
+
+        // Set initial WhatsApp link on page load
+        updateWhatsAppLink();
+    </script>
 </body>
 </html>
