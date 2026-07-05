@@ -104,6 +104,14 @@ const galleryItems = [
         size: "A2 (60 x 74 cm)",
         price: "KSh. 7,500",
         image: "1782860311019.tuxpi.jpg"
+    },
+     {
+        title: "The Radiant Child",
+        medium: "Mixed Media",
+        size: "A2 (60 x 74 cm)",
+        price: "KSh. 7,500",
+        image: ""
+    },
     }
 ];
 
