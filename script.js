@@ -111,7 +111,6 @@ const galleryItems = [
         size: "A2 (60 x 74 cm)",
         price: "KSh. 7,500",
         image: "IMG_20260221_151441.tuxpi.jpg"
-    },
     }
 ];
 
