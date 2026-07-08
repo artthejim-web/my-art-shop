@@ -108,10 +108,17 @@ const galleryItems = [
      {
         title: "The Radiant Child",
         medium: "Mixed Media",
-        size: "A2 (60 x 74 cm)",
+        size: "A2 (50 x 70 cm)",
         price: "KSh. 7,500",
         image: "1783253093803.tuxpi.jpg"
-    }
+    },
+     {
+        title: "Untitled",
+        medium: "Mixed Media",
+        size: "A2 (50 x 70 cm)",
+        price: "KSh. 7,500",
+        image: "1783436581929.tuxpi.jpg"
+     }
 ];
 
 let currentArtworkIndex = 0;
