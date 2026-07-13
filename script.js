@@ -118,6 +118,13 @@ const galleryItems = [
         size: "A2 (50 x 70 cm)",
         price: "KSh. 7,500",
         image: "1783436581929.tuxpi.jpg"
+     },
+      {
+        title: "CR7",
+        medium: "Mixed Media",
+        size: "A2 (50 x 70 cm)",
+        price: "KSh. 7,500",
+        image: "1783757506499.tuxpi.jpg"
      }
 ];
 
