@@ -1,6 +1,13 @@
 // Gallery data
 const galleryItems = [
     {
+        title: "Uliza Kiatu",
+        medium: "Charcoal & Graphite",
+        size: "A3 (28 x 28 cm)",
+        price: "KSh. 3,000",
+        image: "1784988175244.tuxpi.jpg"
+    },
+    {
         title: "Eminem",
         medium: "Charcoal & Graphite",
         size: "A3 (29.7 x 42 cm)",
