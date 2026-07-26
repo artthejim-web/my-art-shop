@@ -279,6 +279,10 @@
         function buildSaleCards() {
             const grid = document.getElementById('saleGrid');
             const countEl = document.getElementById('saleCount');
+             const lightbox = document.getElementById('lightbox');
+        const lightboxImg = lightbox.querySelector('.lightbox-img');
+        const lightboxCaption = lightbox.querySelector('.lightbox-caption');
+        const lightboxClose = lightbox.querySelector('.lightbox-close');
             if (!grid) return;
             countEl.textContent = `${cinematicPrints.length} prints`;
 
