@@ -181,10 +181,24 @@
 </head>
 <body>
     <!-- Lightbox Modal -->
-<div id="lightbox" class="lightbox">
-    <button class="lightbox-close" aria-label="Close">&times;</button>
-    <img class="lightbox-img" src="" alt="Cinematic Print">
-    <div class="lightbox-caption"></div>
+<div id="lightboxModal" class="lightbox">
+    <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+    <button class="lightbox-nav prev" onclick="changeArtwork(-1)">&#10094;</button>
+    <button class="lightbox-nav next" onclick="changeArtwork(1)">&#10095;</button>
+    
+    <div class="lightbox-content">
+        <img id="lightboxImage" src="" alt="">
+        <div class="lightbox-info">
+            <h3 id="lightboxTitle"></h3>
+            <p><strong>Medium:</strong> <span id="lightboxMedium"></span></p>
+            <p><strong>Size:</strong> <span id="lightboxSize"></span></p>
+            <p class="price"><strong>Price:</strong> <span id="lightboxPrice"></span></p>
+            <span id="artworkCounter"></span>
+            <a href="#" target="_blank" id="lightboxOrderBtn" class="order-button">
+                <i class="fab fa-whatsapp"></i> Order via WhatsApp
+            </a>
+        </div>
+    </div>
 </div>
 
     <nav class="navbar">
