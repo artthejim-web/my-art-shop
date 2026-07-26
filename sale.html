@@ -305,11 +305,36 @@
                         </a>
                     </div>
                 `;
-                grid.appendChild(card);
+                   // CLICK TO VIEW FEATURE
+            card.addEventListener('click', (e) => {
+                if(e.target.closest('.sale-order-btn')) return; // don't open if clicking button
+                lightboxImg.src = print.image;
+                lightboxCaption.textContent = `Cinematic Print #${index + 1} · ${print.size} · KES ${print.salePrice.toLocaleString()}`;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
             });
-        }
 
-        buildSaleCards();
-    </script>
-</body>
-</html>
+            grid.appendChild(card);
+        });
+
+        // CLOSE LIGHTBOX
+        lightboxClose.addEventListener('click', () => {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        lightbox.addEventListener('click', (e) => {
+            if(e.target === lightbox) {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        document.addEventListener('keydown', (e) => {
+            if(e.key === 'Escape') {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    }
+
+    buildSaleCards();
+</script>
