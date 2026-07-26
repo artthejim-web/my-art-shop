@@ -135,12 +135,41 @@ const galleryItems = [
      }
 ];
 
-// SALE DATA
+// SALE DATA - Complete list
 const cinematicPrints = [
     { title: "Cinematic Print #1", medium: "Fine Art Print", size: "A3 (297 × 420 mm)", price: "KSh. 1,000", originalPrice: "KSh. 1,500", image: "1779614526190.tuxpi.jpg" },
     { title: "Cinematic Print #2", medium: "Fine Art Print", size: "A3 (297 × 420 mm)", price: "KSh. 1,000", originalPrice: "KSh. 1,500", image: "1779614526203.tuxpi.jpg" },
-    // ... copy all 33 and add title + price + originalPrice
-    { title: "Cinematic Print #33", medium: "Fine Art Print", size: "A3 (297 × 420 mm)", price: "KSh. 1,000", originalPrice: "KSh. 1,500", image: "IMG_E0847.tuxpi.jpg" },
+    { title: "Cinematic Print #3", medium: "Fine Art Print", size: "A3 (297 × 420 mm)", price: "KSh. 1,000", originalPrice: "KSh. 1,500", image: "1781431756263.tuxpi.jpg" },
+    { title: "Cinematic Print #4", medium: "Fine Art Print", size: "A3 (297 × 420 mm)", price: "KSh. 1,000", originalPrice: "KSh. 1,500", image: "1781973214846.tuxpi.jpg" },
+    { title: "Cinematic Print #5", medium: "Fine Art Print", size: "A3 (297 × 420 mm)", price: "KSh. 1,000", originalPrice: "KSh. 1,500", image: "1781973214851.tuxpi.jpg" },
+    { title: "Cinematic Print #6", medium: "Fine Art Print", size: "A3 (297 × 420 mm)", price: "KSh. 1,000", originalPrice: "KSh. 1,500", image: "1782860311019.tuxpi.jpg" },
+    { title: "Cinematic Print #7", medium: "Fine Art Print", size: "A3 (297 × 420 mm)", price: "KSh. 1,000", originalPrice: "KSh. 1,500", image: "1783017867133.tuxpi.jpg" },
+    { title: "Cinematic Print #8", medium: "Fine Art Print", size: "A3 (297 × 420 mm)", price: "KSh. 1,000", originalPrice: "KSh. 1,500", image: "1783253093803.tuxpi.jpg" },
+    { title: "Cinematic Print #9", medium: "Fine Art Print", size: "A3 (297 × 420 mm)", price: "KSh. 1,000", originalPrice: "KSh. 1,500", image: "1783436581929.tuxpi.jpg" },
+    { title: "Cinematic Print #10", medium: "Fine Art Print", size: "A3 (297 × 420 mm)", price: "KSh. 1,000", originalPrice: "KSh. 1,500", image: "1783757506499.tuxpi.jpg" },
+    { title: "Cinematic Print #11", medium: "Fine Art Print", size: "A3 (297 × 420 mm)", price: "KSh. 1,000", originalPrice: "KSh. 1,500", image: "1784988175244.tuxpi.jpg" },
+    { title: "Cinematic Print #12", medium: "Fine Art Print", size: "A3 (297 × 420 mm)", price: "KSh. 1,000", originalPrice: "KSh. 1,500", image: "IMG_0860.tuxpi.jpg" },
+    { title: "Cinematic Print #13", medium: "Fine Art Print", size: "A3 (297 × 420 mm)", price: "KSh. 1,000", originalPrice: "KSh. 1,500", image: "IMG_0861.tuxpi.jpg" },
+    { title: "Cinematic Print #14", medium: "Fine Art Print", size: "A3 (297 × 420 mm)", price: "KSh. 1,000", originalPrice: "KSh. 1,500", image: "IMG_0862.tuxpi.jpg" },
+    { title: "Cinematic Print #15", medium: "Fine Art Print", size: "A3 (297 × 420 mm)", price: "KSh. 1,000", originalPrice: "KSh. 1,500", image: "IMG_0862(1).tuxpi.jpg" },
+    { title: "Cinematic Print #16", medium: "Fine Art Print", size: "A3 (297 × 420 mm)", price: "KSh. 1,000", originalPrice: "KSh. 1,500", image: "IMG_0865.tuxpi.jpg" },
+    { title: "Cinematic Print #17", medium: "Fine Art Print", size: "A3 (297 × 420 mm)", price: "KSh. 1,000", originalPrice: "KSh. 1,500", image: "IMG_0875.tuxpi.jpg" },
+    { title: "Cinematic Print #18", medium: "Fine Art Print", size: "A3 (297 × 420 mm)", price: "KSh. 1,000", originalPrice: "KSh. 1,500", image: "IMG_20251211_123304.tuxpi.jpg" },
+    { title: "Cinematic Print #19", medium: "Fine Art Print", size: "A3 (297 × 420 mm)", price: "KSh. 1,000", originalPrice: "KSh. 1,500", image: "IMG_20251211_181512.tuxpi.jpg" },
+    { title: "Cinematic Print #20", medium: "Fine Art Print", size: "A3 (297 × 420 mm)", price: "KSh. 1,000", originalPrice: "KSh. 1,500", image: "IMG_20251211_193328.tuxpi.jpg" },
+    { title: "Cinematic Print #21", medium: "Fine Art Print", size: "A3 (297 × 420 mm)", price: "KSh. 1,000", originalPrice: "KSh. 1,500", image: "IMG_20251231_184501.tuxpi.jpg" },
+    { title: "Cinematic Print #22", medium: "Fine Art Print", size: "A3 (297 × 420 mm)", price: "KSh. 1,000", originalPrice: "KSh. 1,500", image: "IMG_20251231_215244.tuxpi.jpg" },
+    { title: "Cinematic Print #23", medium: "Fine Art Print", size: "A3 (297 × 420 mm)", price: "KSh. 1,000", originalPrice: "KSh. 1,500", image: "IMG_20260101_185305.tuxpi.jpg" },
+    { title: "Cinematic Print #24", medium: "Fine Art Print", size: "A3 (297 × 420 mm)", price: "KSh. 1,000", originalPrice: "KSh. 1,500", image: "IMG_20260102_173528.tuxpi.jpg" },
+    { title: "Cinematic Print #25", medium: "Fine Art Print", size: "A3 (297 × 420 mm)", price: "KSh. 1,000", originalPrice: "KSh. 1,500", image: "IMG_20260113_182119.tuxpi.jpg" },
+    { title: "Cinematic Print #26", medium: "Fine Art Print", size: "A3 (297 × 420 mm)", price: "KSh. 1,000", originalPrice: "KSh. 1,500", image: "IMG_20260113_183231.tuxpi.jpg" },
+    { title: "Cinematic Print #27", medium: "Fine Art Print", size: "A3 (297 × 420 mm)", price: "KSh. 1,000", originalPrice: "KSh. 1,500", image: "IMG_20260114_181047.tuxpi.jpg" },
+    { title: "Cinematic Print #28", medium: "Fine Art Print", size: "A3 (297 × 420 mm)", price: "KSh. 1,000", originalPrice: "KSh. 1,500", image: "IMG_20260114_182931.tuxpi.jpg" },
+    { title: "Cinematic Print #29", medium: "Fine Art Print", size: "A3 (297 × 420 mm)", price: "KSh. 1,000", originalPrice: "KSh. 1,500", image: "IMG_20260116_173145.tuxpi.jpg" },
+    { title: "Cinematic Print #30", medium: "Fine Art Print", size: "A3 (297 × 420 mm)", price: "KSh. 1,000", originalPrice: "KSh. 1,500", image: "IMG_20260124_172055.tuxpi.jpg" },
+    { title: "Cinematic Print #31", medium: "Fine Art Print", size: "A3 (297 × 420 mm)", price: "KSh. 1,000", originalPrice: "KSh. 1,500", image: "IMG_20260124_173119.tuxpi.jpg" },
+    { title: "Cinematic Print #32", medium: "Fine Art Print", size: "A3 (297 × 420 mm)", price: "KSh. 1,000", originalPrice: "KSh. 1,500", image: "IMG_20260124_173257.tuxpi.jpg" },
+    { title: "Cinematic Print #33", medium: "Fine Art Print", size: "A3 (297 × 420 mm)", price: "KSh. 1,000", originalPrice: "KSh. 1,500", image: "IMG_E0847.tuxpi.jpg" }
 ];
 
 let currentArtworkIndex = 0;
@@ -157,7 +186,22 @@ function loadGallery() {
         galleryItem.onclick = function() {
             openLightbox(index, 'gallery');
         };
-        galleryItem.innerHTML = `...your existing gallery HTML...`;
+        galleryItem.innerHTML = `
+            <div class="gallery-item-image">
+                <img src="${item.image}" alt="${item.title}" loading="lazy">
+            </div>
+            <div class="gallery-item-info">
+                <h3>${item.title}</h3>
+                <div class="gallery-item-details">
+                    <p><strong>Medium:</strong> ${item.medium}</p>
+                    <p><strong>Size:</strong> ${item.size}</p>
+                    <p class="price">${item.price}</p>
+                </div>
+                <button class="order-button" onclick="event.stopPropagation()">
+                    <i class="fab fa-whatsapp"></i> Order via WhatsApp
+                </button>
+            </div>
+        `;
         galleryGrid.appendChild(galleryItem);
     });
 }
@@ -260,13 +304,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const navMenu = document.querySelector('.nav-menu');
     if (hamburger) {
         hamburger.addEventListener('click', function() {
-            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+            navMenu.classList.toggle('open');
         });
     }
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
-            if (navMenu) navMenu.style.display = 'none';
+            if (navMenu) navMenu.classList.remove('open');
         });
     });
 });
