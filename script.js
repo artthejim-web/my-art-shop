@@ -136,18 +136,17 @@ const galleryItems = [
 ];
 
 let currentArtworkIndex = 0;
-let currentGallery = 'gallery'; // tracks which one is open
 
-// Load gallery items
+// Load gallery items (runs on gallery.html only)
 function loadGallery() {
     const galleryGrid = document.getElementById('galleryGrid');
     if (!galleryGrid) return;
-    
+
     galleryItems.forEach((item, index) => {
         const galleryItem = document.createElement('div');
         galleryItem.className = 'gallery-item';
         galleryItem.onclick = function() {
-            openLightbox(index, 'gallery');
+            openLightbox(index);
         };
         galleryItem.innerHTML = `
             <div class="gallery-item-image">
@@ -169,69 +168,33 @@ function loadGallery() {
     });
 }
 
-// Load sale items
-function loadSale() {
-    const saleGrid = document.getElementById('saleGrid');
-    const countEl = document.getElementById('saleCount');
-    if (!saleGrid) return;
-
-    countEl.textContent = `${cinematicPrints.length} prints`;
-
-    cinematicPrints.forEach((item, index) => {
-        const msg = encodeURIComponent(`Hi Jim! I'm interested in "${item.title}" - ${item.size} for ${item.price}`);
-        const waLink = `https://wa.me/254103142621?text=${msg}`;
-        const card = document.createElement('div');
-        card.className = 'sale-card';
-        card.onclick = function() { openLightbox(index, 'sale'); };
-        card.innerHTML = `
-            <span class="sale-discount-tag">30% OFF</span>
-            <img class="sale-card-image" src="${item.image}" alt="${item.title}" loading="lazy">
-            <div class="sale-card-info">
-                <h3>${item.title}</h3>
-                <p class="meta">${item.medium} · ${item.size}</p>
-                <div class="sale-price-row">
-                    <span class="sale-price-now">${item.price}</span>
-                    <span class="sale-price-was">${item.originalPrice}</span>
-                </div>
-                <a href="${waLink}" target="_blank" class="sale-order-btn" onclick="event.stopPropagation()">
-                    <i class="fab fa-whatsapp"></i> Order via WhatsApp
-                </a>
-            </div>
-        `;
-        saleGrid.appendChild(card);
-    });
-}
-
-// UPDATED LIGHTBOX FUNCTIONS
-function openLightbox(index, galleryType) {
+// Lightbox functions (used by the main gallery page)
+function openLightbox(index) {
     currentArtworkIndex = index;
-    currentGallery = galleryType;
     displayArtwork(index);
     document.getElementById('lightboxModal').classList.add('active');
     document.body.style.overflow = 'hidden';
 }
 
 function displayArtwork(index) {
-    const items = currentGallery === 'gallery' ? galleryItems : cinematicPrints;
-    const item = items[index];
-    
+    const item = galleryItems[index];
+
     document.getElementById('lightboxImage').src = item.image;
     document.getElementById('lightboxImage').alt = item.title;
     document.getElementById('lightboxTitle').textContent = item.title;
     document.getElementById('lightboxMedium').textContent = item.medium;
     document.getElementById('lightboxSize').textContent = item.size;
     document.getElementById('lightboxPrice').textContent = item.price;
-    document.getElementById('artworkCounter').textContent = `${index + 1} of ${items.length}`;
-    
+    document.getElementById('artworkCounter').textContent = `${index + 1} of ${galleryItems.length}`;
+
     const orderBtn = document.getElementById('lightboxOrderBtn');
     orderBtn.href = `https://wa.me/254103142621?text=Hi%20Jim%2C%20I%27m%20interested%20in%20%22${encodeURIComponent(item.title)}%22%20-%20${item.price}`;
 }
 
 function changeArtwork(n) {
-    const items = currentGallery === 'gallery' ? galleryItems : cinematicPrints;
     currentArtworkIndex += n;
-    if (currentArtworkIndex >= items.length) currentArtworkIndex = 0;
-    if (currentArtworkIndex < 0) currentArtworkIndex = items.length - 1;
+    if (currentArtworkIndex >= galleryItems.length) currentArtworkIndex = 0;
+    if (currentArtworkIndex < 0) currentArtworkIndex = galleryItems.length - 1;
     displayArtwork(currentArtworkIndex);
 }
 
@@ -260,9 +223,8 @@ document.addEventListener('keydown', function(event) {
 
 // On page load
 document.addEventListener('DOMContentLoaded', function() {
-    loadGallery(); // runs on gallery.html
-    loadSale();    // runs on sale.html
-    
+    loadGallery(); // runs on gallery.html (sale.html builds its own cards/lightbox)
+
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
     if (hamburger) {
