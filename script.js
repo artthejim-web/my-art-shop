@@ -135,65 +135,78 @@ const galleryItems = [
      }
 ];
 
+// SALE DATA
+const cinematicPrints = [
+    { title: "Cinematic Print #1", medium: "Fine Art Print", size: "A3 (297 × 420 mm)", price: "KSh. 1,000", originalPrice: "KSh. 1,500", image: "1779614526190.tuxpi.jpg" },
+    { title: "Cinematic Print #2", medium: "Fine Art Print", size: "A3 (297 × 420 mm)", price: "KSh. 1,000", originalPrice: "KSh. 1,500", image: "1779614526203.tuxpi.jpg" },
+    // ... copy all 33 and add title + price + originalPrice
+    { title: "Cinematic Print #33", medium: "Fine Art Print", size: "A3 (297 × 420 mm)", price: "KSh. 1,000", originalPrice: "KSh. 1,500", image: "IMG_E0847.tuxpi.jpg" },
+];
+
 let currentArtworkIndex = 0;
+let currentGallery = 'gallery'; // tracks which one is open
 
 // Load gallery items
 function loadGallery() {
     const galleryGrid = document.getElementById('galleryGrid');
-    if (!galleryGrid) return; // Only run on gallery page
+    if (!galleryGrid) return;
     
     galleryItems.forEach((item, index) => {
         const galleryItem = document.createElement('div');
         galleryItem.className = 'gallery-item';
         galleryItem.onclick = function() {
-            openLightbox(index);
+            openLightbox(index, 'gallery');
         };
-        galleryItem.innerHTML = `
-            <div class="gallery-item-image">
-                <img src="${item.image}" alt="${item.title}">
-            </div>
-            <div class="gallery-item-info">
-                <h3>${item.title}</h3>
-                <div class="gallery-item-details">
-                    <p><strong>Medium:</strong> ${item.medium}</p>
-                    <p><strong>Size:</strong> ${item.size}</p>
-                    <p class="price"><strong>Price:</strong> ${item.price}</p>
-                </div>
-                <a href="https://wa.me/254103142621?text=Hi%20Jim%2C%20I%27m%20interested%20in%20%22${encodeURIComponent(item.title)}%22%20-%20${item.price}" target="_blank" class="order-button" onclick="event.stopPropagation();">
-                    <i class="fab fa-whatsapp"></i> Order via WhatsApp
-                </a>
-            </div>
-        `;
+        galleryItem.innerHTML = `...your existing gallery HTML...`;
         galleryGrid.appendChild(galleryItem);
     });
 }
 
-// Lightbox Functions
-function openLightbox(index) {
+// Load sale items
+function loadSale() {
+    const saleGrid = document.getElementById('saleGrid');
+    const countEl = document.getElementById('saleCount');
+    if (!saleGrid) return;
+
+    countEl.textContent = `${cinematicPrints.length} prints`;
+
+    cinematicPrints.forEach((item, index) => {
+        const msg = encodeURIComponent(`Hi Jim! I'm interested in "${item.title}" - ${item.size} for ${item.price}`);
+        const waLink = `https://wa.me/254103142621?text=${msg}`;
+        const card = document.createElement('div');
+        card.className = 'sale-card';
+        card.onclick = function() { openLightbox(index, 'sale'); };
+        card.innerHTML = `
+            <span class="sale-discount-tag">30% OFF</span>
+            <img class="sale-card-image" src="${item.image}" alt="${item.title}" loading="lazy">
+            <div class="sale-card-info">
+                <h3>${item.title}</h3>
+                <p class="meta">${item.medium} · ${item.size}</p>
+                <div class="sale-price-row">
+                    <span class="sale-price-now">${item.price}</span>
+                    <span class="sale-price-was">${item.originalPrice}</span>
+                </div>
+                <a href="${waLink}" target="_blank" class="sale-order-btn" onclick="event.stopPropagation()">
+                    <i class="fab fa-whatsapp"></i> Order via WhatsApp
+                </a>
+            </div>
+        `;
+        saleGrid.appendChild(card);
+    });
+}
+
+// UPDATED LIGHTBOX FUNCTIONS
+function openLightbox(index, galleryType) {
     currentArtworkIndex = index;
+    currentGallery = galleryType;
     displayArtwork(index);
     document.getElementById('lightboxModal').classList.add('active');
     document.body.style.overflow = 'hidden';
 }
 
-function closeLightbox() {
-    document.getElementById('lightboxModal').classList.remove('active');
-    document.body.style.overflow = 'auto';
-}
-
-function changeArtwork(n) {
-    currentArtworkIndex += n;
-    if (currentArtworkIndex >= galleryItems.length) {
-        currentArtworkIndex = 0;
-    }
-    if (currentArtworkIndex < 0) {
-        currentArtworkIndex = galleryItems.length - 1;
-    }
-    displayArtwork(currentArtworkIndex);
-}
-
 function displayArtwork(index) {
-    const item = galleryItems[index];
+    const items = currentGallery === 'gallery' ? galleryItems : cinematicPrints;
+    const item = items[index];
     
     document.getElementById('lightboxImage').src = item.image;
     document.getElementById('lightboxImage').alt = item.title;
@@ -201,13 +214,26 @@ function displayArtwork(index) {
     document.getElementById('lightboxMedium').textContent = item.medium;
     document.getElementById('lightboxSize').textContent = item.size;
     document.getElementById('lightboxPrice').textContent = item.price;
-    document.getElementById('artworkCounter').textContent = `${index + 1} of ${galleryItems.length}`;
+    document.getElementById('artworkCounter').textContent = `${index + 1} of ${items.length}`;
     
     const orderBtn = document.getElementById('lightboxOrderBtn');
     orderBtn.href = `https://wa.me/254103142621?text=Hi%20Jim%2C%20I%27m%20interested%20in%20%22${encodeURIComponent(item.title)}%22%20-%20${item.price}`;
 }
 
-// Close lightbox when clicking outside the modal content
+function changeArtwork(n) {
+    const items = currentGallery === 'gallery' ? galleryItems : cinematicPrints;
+    currentArtworkIndex += n;
+    if (currentArtworkIndex >= items.length) currentArtworkIndex = 0;
+    if (currentArtworkIndex < 0) currentArtworkIndex = items.length - 1;
+    displayArtwork(currentArtworkIndex);
+}
+
+function closeLightbox() {
+    document.getElementById('lightboxModal').classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
+
+// Close lightbox when clicking outside
 window.onclick = function(event) {
     const modal = document.getElementById('lightboxModal');
     if (event.target == modal) {
@@ -219,36 +245,28 @@ window.onclick = function(event) {
 document.addEventListener('keydown', function(event) {
     const modal = document.getElementById('lightboxModal');
     if (modal.classList.contains('active')) {
-        if (event.key === 'ArrowLeft') {
-            changeArtwork(-1);
-        } else if (event.key === 'ArrowRight') {
-            changeArtwork(1);
-        } else if (event.key === 'Escape') {
-            closeLightbox();
-        }
+        if (event.key === 'ArrowLeft') changeArtwork(-1);
+        else if (event.key === 'ArrowRight') changeArtwork(1);
+        else if (event.key === 'Escape') closeLightbox();
     }
 });
 
-// Mobile menu toggle
+// On page load
 document.addEventListener('DOMContentLoaded', function() {
-    loadGallery();
+    loadGallery(); // runs on gallery.html
+    loadSale();    // runs on sale.html
     
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
-    
     if (hamburger) {
         hamburger.addEventListener('click', function() {
             navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
         });
     }
-    
-    // Close menu when link is clicked
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
-            if (navMenu) {
-                navMenu.style.display = 'none';
-            }
+            if (navMenu) navMenu.style.display = 'none';
         });
     });
 });
