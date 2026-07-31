@@ -162,6 +162,43 @@
         }
         .sale-order-btn:hover { background: #25D366; border-color: #25D366; color: #fff; }
         .sale-order-btn i { font-size: 1rem; }
+        .sale-order-btn { font-family: inherit; cursor: pointer; }
+        .lightbox-size-selector { margin: 16px 0 20px; }
+        .lightbox-size-selector .size-label {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin: 0 0 10px;
+        }
+        .size-options {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .size-option-btn {
+            flex: 1;
+            min-width: 90px;
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+            padding: 10px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-family: inherit;
+            text-align: center;
+            transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+        }
+        .size-option-btn .size-option-price {
+            display: block;
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.5);
+            margin-top: 3px;
+        }
+        .size-option-btn:hover { border-color: #ffb400; }
+        .size-option-btn.active { background: #ffb400; border-color: #ffb400; color: #0a0a0a; }
+        .size-option-btn.active .size-option-price { color: #0a0a0a; }
         .sale-note {
             background: rgba(255,180,0,0.07);
             border-top: 1px solid rgba(255,180,0,0.2);
@@ -191,8 +228,11 @@
                 <h2 id="lightboxTitle"></h2>
                 <div class="lightbox-details">
                     <p><strong>Medium:</strong> <span id="lightboxMedium"></span></p>
-                    <p><strong>Size:</strong> <span id="lightboxSize"></span></p>
                     <p class="lightbox-price"><strong>Price:</strong> <span id="lightboxPrice"></span></p>
+                </div>
+                <div class="lightbox-size-selector">
+                    <p class="size-label">Choose your size:</p>
+                    <div class="size-options" id="sizeOptions"></div>
                 </div>
                 <a id="lightboxOrderBtn" href="#" target="_blank" class="lightbox-order-button">
                     <i class="fab fa-whatsapp"></i> Order via WhatsApp
@@ -257,56 +297,63 @@
 
     <script src="script.js"></script>
     <script>
+        // All cinematic prints share the same three size/price tiers
+        const SIZE_OPTIONS = [
+            { code: "A4", label: "A4 (210 × 297 mm)", price: 1000 },
+            { code: "A3", label: "A3 (297 × 420 mm)", price: 1800 },
+            { code: "A2", label: "A2 (420 × 594 mm)", price: 2100 },
+        ];
+
         const cinematicPrints = [
-            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_0891.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
-            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_0890.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
-            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_0414.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
-            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_0409.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
-            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_0980.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
-            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_0982.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
-            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_0978.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
-            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_0977.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
-            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_0345.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
-            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_0099.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
-            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_0096.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
-            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_0090.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
-            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_E0866.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
-            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_0860.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
-            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_0861.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
-            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_0862(1).tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
-            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_0862.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
-            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_0865.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
-            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_0875.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
-            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_E0847.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
-            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "1779614526190.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
-            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "1779614526203.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
-            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "1781431756263.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
-            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "1781973214846.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
-            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "1781973214851.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
-            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_20260102_173528.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
-            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_20260113_182119.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
-            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_20260113_183231.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
-            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_20260114_181047.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
-            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_20260114_182931.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
-            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_20260116_173145.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
-            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_20260124_172055.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
-            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_20260124_173119.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
-            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_20260124_173257.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
-            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_20260124_175454.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
-            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_20260201_155405.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
-            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_20260214_184212.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
-            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_20260221_151441.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
-            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_20251231_184501.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
-            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_20251231_215244.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
-            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_20260101_185305.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
-            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_20251211_193328.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
-            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_20251211_181512.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
-            { medium: "Fine Art Print", size: "A3 (297 × 420 mm)", image: "IMG_20251211_123304.tuxpi.jpg", originalPrice: 1500, salePrice: 1000, discount: "30% OFF" },
-    
+            { medium: "Fine Art Print", image: "IMG_0891.tuxpi.jpg" },
+            { medium: "Fine Art Print", image: "IMG_0890.tuxpi.jpg" },
+            { medium: "Fine Art Print", image: "IMG_0414.tuxpi.jpg" },
+            { medium: "Fine Art Print", image: "IMG_0409.tuxpi.jpg" },
+            { medium: "Fine Art Print", image: "IMG_0980.tuxpi.jpg" },
+            { medium: "Fine Art Print", image: "IMG_0982.tuxpi.jpg" },
+            { medium: "Fine Art Print", image: "IMG_0978.tuxpi.jpg" },
+            { medium: "Fine Art Print", image: "IMG_0977.tuxpi.jpg" },
+            { medium: "Fine Art Print", image: "IMG_0345.tuxpi.jpg" },
+            { medium: "Fine Art Print", image: "IMG_0099.tuxpi.jpg" },
+            { medium: "Fine Art Print", image: "IMG_0096.tuxpi.jpg" },
+            { medium: "Fine Art Print", image: "IMG_0090.tuxpi.jpg" },
+            { medium: "Fine Art Print", image: "IMG_E0866.tuxpi.jpg" },
+            { medium: "Fine Art Print", image: "IMG_0860.tuxpi.jpg" },
+            { medium: "Fine Art Print", image: "IMG_0861.tuxpi.jpg" },
+            { medium: "Fine Art Print", image: "IMG_0862(1).tuxpi.jpg" },
+            { medium: "Fine Art Print", image: "IMG_0862.tuxpi.jpg" },
+            { medium: "Fine Art Print", image: "IMG_0865.tuxpi.jpg" },
+            { medium: "Fine Art Print", image: "IMG_0875.tuxpi.jpg" },
+            { medium: "Fine Art Print", image: "IMG_E0847.tuxpi.jpg" },
+            { medium: "Fine Art Print", image: "1779614526190.tuxpi.jpg" },
+            { medium: "Fine Art Print", image: "1779614526203.tuxpi.jpg" },
+            { medium: "Fine Art Print", image: "1781431756263.tuxpi.jpg" },
+            { medium: "Fine Art Print", image: "1781973214846.tuxpi.jpg" },
+            { medium: "Fine Art Print", image: "1781973214851.tuxpi.jpg" },
+            { medium: "Fine Art Print", image: "IMG_20260102_173528.tuxpi.jpg" },
+            { medium: "Fine Art Print", image: "IMG_20260113_182119.tuxpi.jpg" },
+            { medium: "Fine Art Print", image: "IMG_20260113_183231.tuxpi.jpg" },
+            { medium: "Fine Art Print", image: "IMG_20260114_181047.tuxpi.jpg" },
+            { medium: "Fine Art Print", image: "IMG_20260114_182931.tuxpi.jpg" },
+            { medium: "Fine Art Print", image: "IMG_20260116_173145.tuxpi.jpg" },
+            { medium: "Fine Art Print", image: "IMG_20260124_172055.tuxpi.jpg" },
+            { medium: "Fine Art Print", image: "IMG_20260124_173119.tuxpi.jpg" },
+            { medium: "Fine Art Print", image: "IMG_20260124_173257.tuxpi.jpg" },
+            { medium: "Fine Art Print", image: "IMG_20260124_175454.tuxpi.jpg" },
+            { medium: "Fine Art Print", image: "IMG_20260201_155405.tuxpi.jpg" },
+            { medium: "Fine Art Print", image: "IMG_20260214_184212.tuxpi.jpg" },
+            { medium: "Fine Art Print", image: "IMG_20260221_151441.tuxpi.jpg" },
+            { medium: "Fine Art Print", image: "IMG_20251231_184501.tuxpi.jpg" },
+            { medium: "Fine Art Print", image: "IMG_20251231_215244.tuxpi.jpg" },
+            { medium: "Fine Art Print", image: "IMG_20260101_185305.tuxpi.jpg" },
+            { medium: "Fine Art Print", image: "IMG_20251211_193328.tuxpi.jpg" },
+            { medium: "Fine Art Print", image: "IMG_20251211_181512.tuxpi.jpg" },
+            { medium: "Fine Art Print", image: "IMG_20251211_123304.tuxpi.jpg" },
         ];
 
         const WHATSAPP_NUMBER = "254103142621";
         let currentPrintIndex = 0;
+        let selectedSizeIndex = 0; // defaults to A4 each time a print is opened
 
         function buildSaleCards() {
             const grid = document.getElementById('saleGrid');
@@ -314,58 +361,73 @@
             if (!grid) return;
             countEl.textContent = `${cinematicPrints.length} prints`;
 
+            const fromPrice = SIZE_OPTIONS[0].price;
+
             cinematicPrints.forEach((print, index) => {
-                const msg = encodeURIComponent(
-                    `Hi Jim! I'm interested in ordering Cinematic Print #${index + 1} (${print.size}) at KES ${print.salePrice.toLocaleString()}. Please let me know how to proceed.`
-                );
-                const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
                 const card = document.createElement('div');
                 card.className = 'sale-card';
                 card.innerHTML = `
-                    <span class="sale-discount-tag">${print.discount}</span>
+                    <span class="sale-discount-tag">3 Sizes Available</span>
                     <img class="sale-card-image" src="${print.image}" alt="Cinematic Print ${index + 1}" loading="lazy"
                          onerror="this.style.background='#222';this.style.minHeight='180px'">
                     <div class="sale-card-info">
                         <h3>Cinematic Print #${index + 1}</h3>
-                        <p class="meta">${print.medium} · ${print.size}</p>
+                        <p class="meta">${print.medium}</p>
                         <div class="sale-price-row">
-                            <span class="sale-price-now">KES ${print.salePrice.toLocaleString()}</span>
-                            <span class="sale-price-was">KES ${print.originalPrice.toLocaleString()}</span>
+                            <span class="sale-price-now">From KSh. ${fromPrice.toLocaleString()}</span>
                         </div>
-                        <a href="${waLink}" target="_blank" class="sale-order-btn">
-                            <i class="fab fa-whatsapp"></i> Order via WhatsApp
-                        </a>
+                        <button type="button" class="sale-order-btn">
+                            <i class="fas fa-eye"></i> View & Choose Size
+                        </button>
                     </div>
                 `;
-                // CLICK TO VIEW FEATURE
-                card.addEventListener('click', (e) => {
-                    if (e.target.closest('.sale-order-btn')) return; // don't open if clicking button
-                    openLightbox(index);
-                });
-
+                card.addEventListener('click', () => openLightbox(index));
                 grid.appendChild(card);
             });
         }
 
         // Lightbox functions — reuse the shared #lightboxModal markup on this page
-        function displayArtwork(index) {
-            const print = cinematicPrints[index];
+        function renderSizeOptions() {
+            const container = document.getElementById('sizeOptions');
+            container.innerHTML = SIZE_OPTIONS.map((opt, i) => `
+                <button type="button" class="size-option-btn ${i === selectedSizeIndex ? 'active' : ''}" data-index="${i}">
+                    ${opt.code}<span class="size-option-price">KSh. ${opt.price.toLocaleString()}</span>
+                </button>
+            `).join('');
+            container.querySelectorAll('.size-option-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    selectedSizeIndex = parseInt(btn.dataset.index, 10);
+                    renderSizeOptions();
+                    updatePriceAndLink();
+                });
+            });
+        }
+
+        function updatePriceAndLink() {
+            const size = SIZE_OPTIONS[selectedSizeIndex];
+            document.getElementById('lightboxPrice').textContent = `KSh. ${size.price.toLocaleString()}`;
             const msg = encodeURIComponent(
-                `Hi Jim! I'm interested in ordering Cinematic Print #${index + 1} (${print.size}) at KES ${print.salePrice.toLocaleString()}. Please let me know how to proceed.`
+                `Hi Jim! I'm interested in ordering Cinematic Print #${currentPrintIndex + 1} in ${size.label} at KSh. ${size.price.toLocaleString()}. Please let me know how to proceed.`
             );
+            document.getElementById('lightboxOrderBtn').href = `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
+        }
+
+        function displayArtwork(index) {
+            currentPrintIndex = index;
+            const print = cinematicPrints[index];
 
             document.getElementById('lightboxImage').src = print.image;
             document.getElementById('lightboxImage').alt = `Cinematic Print #${index + 1}`;
             document.getElementById('lightboxTitle').textContent = `Cinematic Print #${index + 1}`;
             document.getElementById('lightboxMedium').textContent = print.medium;
-            document.getElementById('lightboxSize').textContent = print.size;
-            document.getElementById('lightboxPrice').textContent = `KES ${print.salePrice.toLocaleString()} (was KES ${print.originalPrice.toLocaleString()})`;
             document.getElementById('artworkCounter').textContent = `${index + 1} of ${cinematicPrints.length}`;
-            document.getElementById('lightboxOrderBtn').href = `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
+
+            selectedSizeIndex = 0; // reset to A4 default whenever a print is opened
+            renderSizeOptions();
+            updatePriceAndLink();
         }
 
         function openLightbox(index) {
-            currentPrintIndex = index;
             displayArtwork(index);
             document.getElementById('lightboxModal').classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -377,10 +439,10 @@
         }
 
         function changeArtwork(n) {
-            currentPrintIndex += n;
-            if (currentPrintIndex >= cinematicPrints.length) currentPrintIndex = 0;
-            if (currentPrintIndex < 0) currentPrintIndex = cinematicPrints.length - 1;
-            displayArtwork(currentPrintIndex);
+            let next = currentPrintIndex + n;
+            if (next >= cinematicPrints.length) next = 0;
+            if (next < 0) next = cinematicPrints.length - 1;
+            displayArtwork(next);
         }
 
         window.onclick = function(event) {
