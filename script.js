@@ -15,7 +15,8 @@ const galleryItems = [
         medium: "Charcoal & Graphite",
         size: "A3 (29.7 x 42 cm)",
         price: "KSh. 5,600",
-        image: "artwork1.jpg.jpg"
+        image: "artwork1.jpg.jpg",
+        sold: true
     },
     {
         title: "SHE",
