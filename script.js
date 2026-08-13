@@ -7,7 +7,7 @@ const galleryItems = [
         medium: "Charcoal & Graphite",
         size: "A3 (28 x 28 cm)",
         price: "KSh. 3,000",
-        image: "1784988175244.tuxpi.jpg"
+        image: "1784988175244.tuxpi.jpg",
         sold: true
     },
     {
