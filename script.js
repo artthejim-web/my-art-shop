@@ -1,4 +1,6 @@
 // Gallery data
+// To mark a piece as sold, just add `sold: true` to its object below.
+// Leaving `sold` off (or setting it to false) keeps the piece available for order.
 const galleryItems = [
     {
         title: "Uliza Kiatu",
@@ -6,6 +8,7 @@ const galleryItems = [
         size: "A3 (28 x 28 cm)",
         price: "KSh. 3,000",
         image: "1784988175244.tuxpi.jpg"
+        sold: true
     },
     {
         title: "Eminem",
@@ -148,20 +151,33 @@ function loadGallery() {
         galleryItem.onclick = function() {
             openLightbox(index);
         };
+
+        const soldBadge = item.sold
+            ? '<span style="position:absolute;top:14px;left:14px;background:#e63946;color:#fff;font-size:0.7rem;font-weight:800;letter-spacing:0.08em;padding:4px 10px;border-radius:2px;text-transform:uppercase;z-index:2;">Sold</span>'
+            : '';
+        const imageStyle = item.sold ? 'filter:grayscale(70%);opacity:0.65;' : '';
+        const priceHTML = item.sold
+            ? `<p class="price" style="text-decoration:line-through;opacity:0.6;">${item.price}</p>`
+            : `<p class="price">${item.price}</p>`;
+        const buttonHTML = item.sold
+            ? `<button class="order-button" disabled style="opacity:0.5;cursor:not-allowed;background:#555;">Sold Out</button>`
+            : `<button class="order-button" onclick="event.stopPropagation()">
+                    <i class="fab fa-whatsapp"></i> Order via WhatsApp
+                </button>`;
+
         galleryItem.innerHTML = `
-            <div class="gallery-item-image">
-                <img src="${item.image}" alt="${item.title}" loading="lazy">
+            <div class="gallery-item-image" style="position:relative;">
+                ${soldBadge}
+                <img src="${item.image}" alt="${item.title}" loading="lazy" style="${imageStyle}">
             </div>
             <div class="gallery-item-info">
                 <h3>${item.title}</h3>
                 <div class="gallery-item-details">
                     <p><strong>Medium:</strong> ${item.medium}</p>
                     <p><strong>Size:</strong> ${item.size}</p>
-                    <p class="price">${item.price}</p>
+                    ${priceHTML}
                 </div>
-                <button class="order-button" onclick="event.stopPropagation()">
-                    <i class="fab fa-whatsapp"></i> Order via WhatsApp
-                </button>
+                ${buttonHTML}
             </div>
         `;
         galleryGrid.appendChild(galleryItem);
@@ -184,11 +200,29 @@ function displayArtwork(index) {
     document.getElementById('lightboxTitle').textContent = item.title;
     document.getElementById('lightboxMedium').textContent = item.medium;
     document.getElementById('lightboxSize').textContent = item.size;
-    document.getElementById('lightboxPrice').textContent = item.price;
+    document.getElementById('lightboxPrice').textContent = item.sold ? `${item.price} — SOLD` : item.price;
     document.getElementById('artworkCounter').textContent = `${index + 1} of ${galleryItems.length}`;
 
     const orderBtn = document.getElementById('lightboxOrderBtn');
-    orderBtn.href = `https://wa.me/254103142621?text=Hi%20Jim%2C%20I%27m%20interested%20in%20%22${encodeURIComponent(item.title)}%22%20-%20${item.price}`;
+
+    // Create (once) a "sold" message that sits where the order button normally is
+    let soldMsg = document.getElementById('lightboxSoldMsg');
+    if (!soldMsg) {
+        soldMsg = document.createElement('p');
+        soldMsg.id = 'lightboxSoldMsg';
+        soldMsg.style.cssText = 'color:#e63946;font-weight:700;letter-spacing:0.05em;margin-top:14px;';
+        soldMsg.textContent = 'This piece has been sold';
+        orderBtn.insertAdjacentElement('afterend', soldMsg);
+    }
+
+    if (item.sold) {
+        orderBtn.style.display = 'none';
+        soldMsg.style.display = 'block';
+    } else {
+        orderBtn.style.display = '';
+        soldMsg.style.display = 'none';
+        orderBtn.href = `https://wa.me/254103142621?text=Hi%20Jim%2C%20I%27m%20interested%20in%20%22${encodeURIComponent(item.title)}%22%20-%20${item.price}`;
+    }
 }
 
 function changeArtwork(n) {
