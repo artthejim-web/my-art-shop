@@ -99,14 +99,16 @@ const galleryItems = [
         medium: "Charcoal & Pastels",
         size: "A4 (21 x 29.7 cm)",
         price: "KSh. 3,000",
-        image: "artwork12.jpg.jpg"
+        image: "artwork12.jpg.jpg",
+        sold: true
     },
     {
         title: "Untitled",
         medium: "Mixed Media",
         size: "A3 (29.7 x 42 cm)",
         price: "KSh. 5,600",
-        image: "artwork13.jpg.jpg"
+        image: "artwork13.jpg.jpg",
+        sold: true
     },
     {
         title: "The Boy Who Dreamt",
