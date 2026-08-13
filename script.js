@@ -3,6 +3,20 @@
 // Leaving `sold` off (or setting it to false) keeps the piece available for order.
 const galleryItems = [
     {
+        title: "Kung Lao",
+        medium: "Colored Pencils",
+        size: "A4 (20 x 20 cm)",
+        price: "KSh. 3,500",
+        image: "KUNG LAO.tuxpi.jpg"
+    },
+      {
+        title: "NIKLAUS",
+        medium: "White Pastels",
+        size: "A4 (21 x 29.7 cm)",
+        price: "KSh. 3,000",
+        image: "Niklaus.tuxpi.jpg"
+      },
+    {
         title: "Uliza Kiatu",
         medium: "Charcoal & Graphite",
         size: "A3 (28 x 28 cm)",
