@@ -2,6 +2,20 @@
 // To mark a piece as sold, just add `sold: true` to its object below.
 // Leaving `sold` off (or setting it to false) keeps the piece available for order.
 const galleryItems = [
+     {
+        title: "Untitled",
+        medium: "Mixed Media",
+        size: "A4 (14 x 20 cm)",
+        price: "KSh. 3,000",
+        image: "1787330427007.tuxpi.jpg"
+     },
+    {
+        title: "Untitled",
+        medium: "Mixed Media",
+        size: "A4 (14 x 14 cm)",
+        price: "KSh. 1,500",
+        image: "1787329049210.tuxpi.jpg"
+     },
     {
         title: "Kung Lao",
         medium: "Colored Pencils",
