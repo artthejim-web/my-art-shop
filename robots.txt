@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
+
 Sitemap: https://artthejim-web.github.io/my-art-shop/sitemap.xml
