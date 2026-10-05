@@ -24,10 +24,10 @@ const galleryItems = [
         image: "AKALA.jpeg"
      },
        {
-        title: "Untitled",
+        title: "Basquiat",
         medium: "Oil Pastels",
         size: "A4 (18 x 30 cm)",
-        price: "KSh. 5,600",
+        price: "KSh. 9,000",
         image: "1789557886208.tuxpi.jpg"
      },
      {
