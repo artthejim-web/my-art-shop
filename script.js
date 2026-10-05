@@ -2,6 +2,27 @@
 // To mark a piece as sold, just add `sold: true` to its object below.
 // Leaving `sold` off (or setting it to false) keeps the piece available for order.
 const galleryItems = [
+        {
+        title: "Sifeel",
+        medium: "Mixed Media",
+        size: "A3 (29.7 x 42 cm)",
+        price: "KSh. 9,000",
+        image: "Maasai.jpeg"
+     },
+        {
+        title: "Mzigo",
+        medium: "Oil Pastels",
+        size: "A3 (29.7 x 42 cm)",
+        price: "KSh. 9,000",
+        image: "Mzigo.jpeg"
+     },
+        {
+        title: "Dontire",
+        medium: "Oil Pastels",
+        size: "A4 (16 x 30 cm)",
+        price: "KSh. 6,000",
+        image: "AKALA.jpeg"
+     },
        {
         title: "Untitled",
         medium: "Oil Pastels",
