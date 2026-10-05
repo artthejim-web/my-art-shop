@@ -3,6 +3,13 @@
 // Leaving `sold` off (or setting it to false) keeps the piece available for order.
 const galleryItems = [
         {
+        title: "Tobey",
+        medium: "Charcoal, Graphite & Colored Pencils",
+        size: "A4 (20 x 20 cm)",
+        price: "KSh. 6,000",
+        image: "TOBEY.tuxpi.jpg"
+    },
+        {
         title: "Sifeel",
         medium: "Mixed Media",
         size: "A3 (29.7 x 42 cm)",
